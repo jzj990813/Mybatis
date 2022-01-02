@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定的dao/mapper接口 接口路径-->
+<mapper namespace="com.jian.dao.UserMapper">
+    <!--   结果集映射
+       <resultMap id="AdminMap" type="Admin">
+           column 对应数据库列  property 对应实体类的属性
+           <result column="" property=""></result>
+       </resultMap>-->
+    <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=传入参数类型-->
+    <select id="getUserList" resultType="User" >
+        select * from `user`
+    </select>
+    <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=参数类型  #{ }参数通配符-->
+    <select id="getUserByID" parameterType="int" resultType="com.jian.pojo.User" >
+        select * from `user` where id = #{id}
+    </select>
+    <!--插入-->
+    <insert id="addUser" parameterType="com.jian.pojo.User">
+        insert into user(name,sex,age,address,phone) value (#{name},#{sex},#{age},#{address},#{phone})
+    </insert>
+    <!--修改-->
+    <update id="updateUser" parameterType="com.jian.pojo.User">
+        update user
+        set name = #{name},sex=#{sex},age=#{age},address=#{address},phone=#{phone}
+        where id=#{id};
+    </update>
+    <!--删除-->
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id=#{id}
+    </delete>
+    <!--根据名字模糊查询-->
+    <select id="getUserLike" resultType="com.jian.pojo.User" >
+        select * from `user` where name like "%"#{value}"%"
+    </select>
+    <!--分页查询-->
+    <select id="getUserLimit"  parameterType="map" resultType="User">
+        select * from `user` limit #{startIndex},#{pageSize}
+    </select>
+</mapper>
