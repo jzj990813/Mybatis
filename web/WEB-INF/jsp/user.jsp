@@ -8,16 +8,18 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%--标签库--%>
 <%--美化页面bootstra--%>
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
 <html>
 <head>
     <title>Title</title>
 </head>
+
 <body>
+<jsp:include page="top.jsp"></jsp:include>
+<jsp:include page="left.jsp"></jsp:include>
     <div class="container">
         <div class="row clearfix">
             <div class="col-md-12 column">
@@ -25,11 +27,13 @@
                     <h3>
                         <small>用户列表</small>
                     </h3>
-                    <div class="page-header" style="margin-right: 50px">
+                    <div>
+                        <ul style="align-content: center">
                         <form action="${pageContext.request.contextPath}/User/select">
                             <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入所查询姓名">&nbsp;&nbsp;
                             <input type="submit" value="查询">
                         </form>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -62,18 +66,14 @@
                                     <a style="color: chocolate" href="${pageContext.request.contextPath}/User/delete?id=${user.getId()}">删除</a>
                                 </td>
                             </tr>
-
                         </c:forEach>
                     </tbody>
                 </table>
             </div>
             <div>
-                <a style="color: chocolate" href="${pageContext.request.contextPath}/User/toInsert">添加</a>
+
             </div>
         </div>
     </div>
-
-
-
 </body>
 </html>

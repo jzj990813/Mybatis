@@ -13,9 +13,9 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath}/User/update?id=${user.getId()}">
-    <div>
-    <label>用户ID：</label>
-    <input type="text" name="id" class="" value="${user.id}">
+    <div >
+    <label>用户ID：${user.id}</label>
+        <input type="hidden"  name="id" class="" value="${user.id}">
     </div>
     <div>
         <label>用户姓名：</label>

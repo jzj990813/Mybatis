@@ -1,14 +1,15 @@
 package com.jian.controller;
 
 import com.jian.pojo.Admin;
+import com.jian.pojo.User;
 import com.jian.service.AdminService;
-import com.jian.service.AdminServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.jian.service.IMPL.AdminServiceImpl;
+import com.jian.service.UserService;
+
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.Mapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -23,10 +24,10 @@ import java.util.List;
 public class AdminController {
     //controller调用service层
     public AdminService adminService=new AdminServiceImpl();
-
     public AdminController(@Qualifier("AdminServiceImpl") AdminService adminService) {
         this.adminService = adminService;
     }
+
 
 
     @GetMapping("/allAdmins")
@@ -35,7 +36,6 @@ public class AdminController {
         for (Admin admin1 : admin) {
             System.out.println(admin1);
         }
-
         model.addAttribute("adminList",admin);
         return "allBook";
     }
@@ -44,23 +44,38 @@ public class AdminController {
         return "login";
         }
 
+
+
     @RequestMapping("/main")
     public String Main(){
         return "main";
     }
 
-@RequestMapping("/Login")
-    public String login(HttpSession session,String username, String password,Model model){
-        //把用户信息存在session中
-    session.setAttribute("uesrname",username);
-    model.addAttribute("username",username);
-        return "main";
+
+
+   @RequestMapping("/Login")
+    public String login(HttpSession session,String username,String password,Model model){
+       Admin adminLike = adminService.getAdminLike(username);
+       System.out.println(username);
+       System.out.println(password);
+       if (adminLike!=null){
+           if(adminLike.getNaem().equals(username) && adminLike.getPassword().equals(password)) {
+               //把用户信息存在session中
+               System.out.println("01111");
+               session.setAttribute("username", username);
+               model.addAttribute("username", username);
+               return "redirect:/Drug/getAll";
+           } else {
+               return "login";
+           }
+       }
+       return "login";
     }
     @RequestMapping("/Out")
     public String OutLogin(HttpSession session){
         //把用户信息存在session中
         session.removeAttribute("username");
-        return "main";
+        return "login";
     }
 
 }

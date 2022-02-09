@@ -11,7 +11,7 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="${pageContext.request.contextPath}/admin/goLogin">进入管理员页面</a>
+  <a href="${pageContext.request.contextPath}/admin/goLogin">进入游客页面</a>
   <a href="${pageContext.request.contextPath}/admin/main">进入管理员页面</a>
 
 <%--上传文件  enctype="multipart/form-data"--%>
@@ -21,5 +21,13 @@
   </form>
 <%--  文件下载--%>
   <a href="${pageContext.request.contextPath}/static/1.png">下载 </a>
+
+
+
+
+
+
+
+
   </body>
 </html>

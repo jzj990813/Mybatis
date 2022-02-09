@@ -1,7 +1,8 @@
-package com.jian.service;
+package com.jian.service.IMPL;
 
 import com.jian.dao.AdminMapper;
 import com.jian.pojo.Admin;
+import com.jian.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<Admin> getAdminLike(String value) {
+    public Admin getAdminLike(String value) {
         return adminMapper.getAdminLike(value);
     }
 

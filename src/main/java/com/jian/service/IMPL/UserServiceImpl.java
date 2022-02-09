@@ -1,7 +1,8 @@
-package com.jian.service;
+package com.jian.service.IMPL;
 
 import com.jian.dao.UserMapper;
 import com.jian.pojo.User;
+import com.jian.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ import java.util.Map;
  * @create 2022 01 02 17:00
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;

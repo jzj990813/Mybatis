@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定的dao/mapper接口 接口路径-->
+<mapper namespace="com.jian.dao.DrugMapper">
+    <!--   结果集映射
+       <resultMap id="AdminMap" type="Admin">
+           column 对应数据库列  property 对应实体类的属性
+           <result column="" property=""></result>
+       </resultMap>-->
+    <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=传入参数类型-->
+    <select id="getDrugList" resultType="com.jian.pojo.Drug" >
+        select * from `drug`
+    </select>
+    <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=参数类型  #{ }参数通配符-->
+    <select id="getDrugByID" parameterType="int" resultType="com.jian.pojo.Drug" >
+        select * from `drug` where id = #{id}
+    </select>
+    <!--插入-->
+    <insert id="addDrug" parameterType="com.jian.pojo.Drug">
+        insert into drug(name,type,date,stock,pPrice,sPrice,address,description) value (#{name},#{type},#{date},#{stock},#{pPrice},#{sPrice},#{address},#{description})
+    </insert>
+    <!--修改-->
+    <update id="updateDrug" parameterType="com.jian.pojo.Drug">
+        update drug
+        set name = #{name},type=#{type},date=#{date},stock=#{stock},pPrice=#{pPrice},sPrice=#{sPrice},address=#{address},description=#{description}
+        where id=#{id};
+    </update>
+    <!--删除-->
+    <delete id="deleteDrug" parameterType="int">
+        delete from drug where id=#{id}
+    </delete>
+    <!--根据名字模糊查询-->
+    <select id="getDrugLike" resultType="com.jian.pojo.Drug" >
+        select * from `drug` where name like "%"#{value}"%"
+    </select>
+    <!--分页查询-->
+    <select id="getDrugLimit"  parameterType="map" resultType="com.jian.pojo.Drug">
+        select * from `drug` limit #{startIndex},#{pageSize}
+    </select>
+</mapper>

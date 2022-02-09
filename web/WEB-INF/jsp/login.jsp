@@ -14,7 +14,8 @@
 <body>
 <form action="${pageContext.request.contextPath}/admin/Login" method="post">
     用户名：<input type="text" name="username">
-    密 码：<input type="text" name="password">
+    密 码：<input type="password" name="password">
+    <span>${msg}</span>
     <input type="submit" value="登录">
 </form>
 

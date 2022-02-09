@@ -25,7 +25,7 @@ public interface AdminService {
     //删除管理员
     int deleteAdmin(int id);
     //模糊查询
-    List<Admin> getAdminLike(String value);
+    Admin getAdminLike(String value);
     //分页查询
     List<Admin> getAdminLimit(Map<String,Integer> map);
     /*注解开发*/

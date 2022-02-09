@@ -1,14 +1,13 @@
 package com.jian.controller;
 import com.jian.pojo.User;
 import com.jian.service.UserService;
-import com.jian.service.UserServiceImpl;
-import org.springframework.aop.target.LazyInitTargetSource;
+import com.jian.service.IMPL.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -23,12 +22,13 @@ public class UserController {
    }
 
    @RequestMapping("/getAll")
-    public String getAll(Model model){
+    public String getAll(Model model,HttpSession session){
        List <User> userList=userService.getUserList();
        for (User userList1 : userList) {
            System.out.println(userList1);
        }
        model.addAttribute("userList",userList);
+       model.addAttribute("username",session.getAttribute("username"));
        return "user";
    }
 
@@ -39,8 +39,10 @@ public class UserController {
     public String toInsert(){
         return "insertUser";
     }
+
     @RequestMapping("/insert")
     public String insert(User user){
+        System.out.println(user);
         userService.addUser(user);
         return "redirect:/User/getAll";
     }
@@ -77,8 +79,16 @@ public class UserController {
     @RequestMapping("/select")
     public String select(String selectName,Model model){
         List<User> userLike = userService.getUserLike(selectName);
-        model.addAttribute("userList",userLike);
-        return "user";
+        System.out.println("");
+        if(userLike.size()==0||userLike==null){
+            List<User> userList = userService.getUserList();
+            model.addAttribute("userList",userList);
+        }else {
+            model.addAttribute("userList",userLike);
+            return "user";
+        }
+        return "redirect:/User/getAll";
+
     }
 
 

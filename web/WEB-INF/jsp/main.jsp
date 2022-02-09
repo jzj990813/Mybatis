@@ -14,5 +14,6 @@
 ${username}
 
 <a href="${pageContext.request.contextPath}/admin/Out">注销</a>
+<a href="${pageContext.request.contextPath}/User/getAll">用户页面</a>
 </body>
 </html>

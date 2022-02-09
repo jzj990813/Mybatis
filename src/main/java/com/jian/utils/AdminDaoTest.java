@@ -85,10 +85,8 @@ public class AdminDaoTest {
     public void Test6(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         AdminMapper mapper = sqlSession.getMapper(AdminMapper.class);
-        List<Admin> arrAdmin = mapper.getAdminLike("杰");
-        for (Admin admin : arrAdmin) {
-            System.out.println(admin);
-        }
+        Admin a = mapper.getAdminLike("杰");
+        System.out.println(a);
         sqlSession.close();
     }
 

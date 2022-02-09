@@ -31,9 +31,9 @@
     <delete id="deleteAdmin" parameterType="int">
           delete from admin where id=#{id}
     </delete>
-    <!--根据名字模糊查询-->
+    <!--根据名字查询-->
     <select id="getAdminLike" resultType="com.jian.pojo.Admin" >
-        select * from `admin` where name like "%"#{value}"%"
+        select * from `admin` where name =#{value}
     </select>
     <!--分页查询-->
     <select id="getAdminLimit"  parameterType="map" resultType="Admin">

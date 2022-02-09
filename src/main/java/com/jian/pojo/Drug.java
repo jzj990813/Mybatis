@@ -1,46 +1,57 @@
 package com.jian.pojo;
 
+import lombok.Data;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
+import java.sql.Date;
 import java.util.Objects;
 
-/**药品
-  DROP TABLE IF EXISTS `drug`;
-  CREATE TABLE `drug`  (
- `id` int(11) NOT NULL COMMENT '药品id',
- `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '药品名称',
- `manufacturer` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '生产厂家',
- `date` date NOT NULL COMMENT '生产日期',
- `inventory` int(11) NOT NULL COMMENT '库存',
- `therapy` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '针对症状',
- `prohibit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '禁止使用范围',
-  PRIMARY KEY (`id`) USING BTREE
-  ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
-
- SET FOREIGN_KEY_CHECKS = 1;
- * @autHor jzj
- * @create 2022 01 02 16:25
+/*
+ 药品模块：
+        编号  id   主键  int
+        名称  name           verchar
+        类型  type
+        有效日期 Date
+        库存  Stock
+        采购价格   pPrice
+        售价   sPrice
+        地址 address
+        描述  Description
  */
 public class Drug {
     private int id;
     private String name;
-    private String manufacture;
-    private Data date;
-    private int inventory;
-    private String therapy ;
-    private String prohibit;
+    private String type;
+    private Date date;
+    private int stock;
+    private int pPrice;
+    private int sPrice;
+    private String address;
+    private String description;
 
     public Drug() {
     }
 
-    public Drug(String name, String manufacture, Data date, int inventory, String therapy, String prohibit) {
+    public Drug(int id, String name, String type, Date date, int stock, int pPrice, int sPrice, String address, String description) {
+        this.id = id;
         this.name = name;
-        this.manufacture = manufacture;
+        this.type = type;
         this.date = date;
-        this.inventory = inventory;
-        this.therapy = therapy;
-        this.prohibit = prohibit;
+        this.stock = stock;
+        this.pPrice = pPrice;
+        this.sPrice = sPrice;
+        this.address = address;
+        this.description = description;
+    }
+
+    public Drug(String name, String type, Date date, int stock, int pPrice, int sPrice, String address, String description) {
+        this.name = name;
+        this.type = type;
+        this.date = date;
+        this.stock = stock;
+        this.pPrice = pPrice;
+        this.sPrice = sPrice;
+        this.address = address;
+        this.description = description;
     }
 
     public int getId() {
@@ -59,44 +70,60 @@ public class Drug {
         this.name = name;
     }
 
-    public String getManufacture() {
-        return manufacture;
+    public String getType() {
+        return type;
     }
 
-    public void setManufacture(String manufacture) {
-        this.manufacture = manufacture;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Data getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Data date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public int getInventory() {
-        return inventory;
+    public int getStock() {
+        return stock;
     }
 
-    public void setInventory(int inventory) {
-        this.inventory = inventory;
+    public void setStock(int stock) {
+        this.stock = stock;
     }
 
-    public String getTherapy() {
-        return therapy;
+    public int getpPrice() {
+        return pPrice;
     }
 
-    public void setTherapy(String therapy) {
-        this.therapy = therapy;
+    public void setpPrice(int pPrice) {
+        this.pPrice = pPrice;
     }
 
-    public String getProhibit() {
-        return prohibit;
+    public int getsPrice() {
+        return sPrice;
     }
 
-    public void setProhibit(String prohibit) {
-        this.prohibit = prohibit;
+    public void setsPrice(int sPrice) {
+        this.sPrice = sPrice;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
@@ -104,12 +131,12 @@ public class Drug {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Drug drug = (Drug) o;
-        return id == drug.id && inventory == drug.inventory && Objects.equals(name, drug.name) && Objects.equals(manufacture, drug.manufacture) && Objects.equals(date, drug.date) && Objects.equals(therapy, drug.therapy) && Objects.equals(prohibit, drug.prohibit);
+        return id == drug.id && stock == drug.stock && pPrice == drug.pPrice && sPrice == drug.sPrice && Objects.equals(name, drug.name) && Objects.equals(type, drug.type) && Objects.equals(date, drug.date) && Objects.equals(address, drug.address) && Objects.equals(description, drug.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, manufacture, date, inventory, therapy, prohibit);
+        return Objects.hash(id, name, type, date, stock, pPrice, sPrice, address, description);
     }
 
     @Override
@@ -117,11 +144,13 @@ public class Drug {
         return "Drug{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", manufacture='" + manufacture + '\'' +
+                ", type='" + type + '\'' +
                 ", date=" + date +
-                ", inventory=" + inventory +
-                ", therapy='" + therapy + '\'' +
-                ", prohibit='" + prohibit + '\'' +
+                ", stock=" + stock +
+                ", pPrice=" + pPrice +
+                ", sPrice=" + sPrice +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
