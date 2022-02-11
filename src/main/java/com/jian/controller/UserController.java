@@ -22,13 +22,12 @@ public class UserController {
    }
 
    @RequestMapping("/getAll")
-    public String getAll(Model model,HttpSession session){
+    public String getAll(Model model){
        List <User> userList=userService.getUserList();
        for (User userList1 : userList) {
            System.out.println(userList1);
        }
        model.addAttribute("userList",userList);
-       model.addAttribute("username",session.getAttribute("username"));
        return "user";
    }
 

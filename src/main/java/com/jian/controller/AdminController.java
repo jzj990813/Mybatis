@@ -1,10 +1,8 @@
 package com.jian.controller;
 
 import com.jian.pojo.Admin;
-import com.jian.pojo.User;
 import com.jian.service.AdminService;
 import com.jian.service.IMPL.AdminServiceImpl;
-import com.jian.service.UserService;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -28,9 +26,17 @@ public class AdminController {
         this.adminService = adminService;
     }
 
+    @RequestMapping("/goAdd")
+    public String goAdd(){
+        return "addAdmin";
+    }
+    @RequestMapping("add")
+    public String insert(Admin admin){
+        adminService.addAdmin(admin);
+        return "main";
+    }
 
-
-    @GetMapping("/allAdmins")
+    @RequestMapping("/allAdmins")
     public String list(Model model){
         List<Admin> admin = adminService.getAdminList();
         for (Admin admin1 : admin) {
@@ -56,16 +62,16 @@ public class AdminController {
    @RequestMapping("/Login")
     public String login(HttpSession session,String username,String password,Model model){
        Admin adminLike = adminService.getAdminLike(username);
-       System.out.println(username);
-       System.out.println(password);
+       String msg="";
        if (adminLike!=null){
            if(adminLike.getNaem().equals(username) && adminLike.getPassword().equals(password)) {
                //把用户信息存在session中
-               System.out.println("01111");
                session.setAttribute("username", username);
                model.addAttribute("username", username);
                return "redirect:/Drug/getAll";
            } else {
+               msg="输入有误";
+               model.addAttribute(msg);
                return "login";
            }
        }

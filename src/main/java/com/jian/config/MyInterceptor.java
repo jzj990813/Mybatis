@@ -21,7 +21,7 @@ public class MyInterceptor implements HandlerInterceptor {
         if (request.getRequestURI().contains("goLogin")){
             return true;
         }
-//第一次登录没session
+       //第一次登录没session
         if (session.getAttribute("username")!=null){
             return true;
         }

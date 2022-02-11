@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -27,6 +28,15 @@ public class DrugController {
         }
         model.addAttribute("drugList",drugList);
         return "drug";
+    }
+    @RequestMapping("/getAll1")
+    public String getAll1(Model model){
+        List<Drug> drugList = drugService.getDrugList();
+        for (Drug drug : drugList) {
+            System.out.println(drug);
+        }
+        model.addAttribute("drugList",drugList);
+        return "goods_lis";
     }
 
 
@@ -74,5 +84,20 @@ public class DrugController {
             return"redirect:/Drug/getAll";
         }
 
+    }
+
+
+    @RequestMapping("/select1")
+    public String select1(Model model,Integer i,Integer m){
+        //map参数的使用
+        HashMap<String, Integer> map = new HashMap<>();
+        map.put("startIndex",i);
+        map.put("pageSize",m);
+        List<Drug> drugLimit = drugService.getDrugLimit(map);
+        for (Drug drug : drugLimit) {
+            System.out.println(drug);
+        }
+        model.addAttribute("drugList",drugLimit);
+        return "drug";
     }
 }

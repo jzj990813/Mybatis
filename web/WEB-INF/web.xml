@@ -15,11 +15,19 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
 
+
+    <!--增加对静态资源的处理,当前的设置必须在Spring的Dispatcher的前面-->
+  <!--  <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>/css/*</url-pattern>
+    </servlet-mapping>-->
     <!-- 配置请求地址拦截url -->
     <servlet-mapping>
         <servlet-name>springmvc</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
     <!--配置过滤器  解决乱码-->
     <filter>
         <filter-name>encodingFilter</filter-name>
