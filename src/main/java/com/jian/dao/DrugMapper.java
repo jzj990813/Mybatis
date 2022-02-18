@@ -1,8 +1,10 @@
 package com.jian.dao;
 import com.jian.pojo.Drug;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
 import java.util.Map;
-
+@Repository
 public interface DrugMapper {
     //获取全部用户
     List<Drug> getDrugList();

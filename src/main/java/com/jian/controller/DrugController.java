@@ -3,22 +3,24 @@ package com.jian.controller;
 import com.jian.pojo.Drug;
 import com.jian.service.DrugService;
 import com.jian.service.IMPL.DrugServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 
 @Controller
 @RequestMapping("/Drug")
 public class DrugController {
-    private DrugService drugService=new DrugServiceImpl();
-    public DrugController(@Qualifier("DrugServiceImpl")DrugService drugService){
+    @Autowired
+    private DrugService drugService;
+      /*  public DrugController(@Qualifier("DrugServiceImpl")DrugService drugService){
       this.drugService=drugService;
-    }
+    }*/
 
     @RequestMapping("/getAll")
     public String getAll(Model model){
@@ -58,7 +60,7 @@ public class DrugController {
     @RequestMapping("/delete")
     public String delete(int id){
         drugService.deleteDrug(id);
-        return "drug";
+        return "redirect:/Drug/getAll";
     }
 
 

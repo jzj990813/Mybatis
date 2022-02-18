@@ -10,14 +10,14 @@
 <html>
 <head>
     <title>主页</title>
-    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css">
     <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/static/style.css">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<jsp:include page="/static/header.jsp"></jsp:include>
+${username}
 <%--此页当主页--%>
 <a href="${pageContext.request.contextPath}/Drug/getAll">用户页面</a>
 </body>

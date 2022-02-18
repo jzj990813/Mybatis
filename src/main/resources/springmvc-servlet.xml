@@ -47,13 +47,13 @@
  <!--<bean id="/Test" class=""></bean>-->
 
  <!--拦截器-->
-  <mvc:interceptors>
+ <!-- <mvc:interceptors>
    <mvc:interceptor>
-    <!--所有请求-->
+    &lt;!&ndash;所有请求&ndash;&gt;
     <mvc:mapping path="/**"/>
     <bean class="com.jian.config.MyInterceptor"></bean>
    </mvc:interceptor>
-  </mvc:interceptors>
+  </mvc:interceptors>-->
 
  <!--文件上传-->
  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

@@ -8,11 +8,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
-
 @Service
 public class DrugServiceImpl implements DrugService {
     @Autowired
-    private DrugMapper drugMapper;
+    public DrugMapper drugMapper;
     public void setDrugMapper(DrugMapper drugMapper) {
         this.drugMapper=drugMapper;
     }

@@ -10,36 +10,71 @@
 <html>
 <head>
     <title>修改用户</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/User/update?id=${user.getId()}">
-    <div >
-    <label>用户ID：${user.id}</label>
-        <input type="hidden"  name="id" class="" value="${user.id}">
+<div class="container-fluid">
+    <jsp:include page="header.jsp"></jsp:include>
+    <br><br>
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/User/update?id=${user.getId()}">
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户ID：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"   name="id"  value="${user.id}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <div>
+                <label  class="col-sm-1 control-label">用户姓名：</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control"   name="name"  value="${user.name}" required="required">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户性别：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"   name="type"  value="${user.sex}" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户年龄：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"   name="date"  value="${user.age}" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户地址：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"   name="stock"  value="${user.address}" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户电话：</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"   name="pPrice"  value="${user.phone}" required="required">
+            </div>
+        </div>
+
+<%-- <div class="form-group">
+     <label for="select_topic" class="col-sm-1 control-label">类目</label>
+     <div class="col-sm-6">
+         <select class="form-control" id="select_topic" name="typeid">
+             <c:forEach items="${typeList }" var="t">
+                 <option <c:if test="${t.id==g.type.id }">selected="selected"</c:if> value="${t.id }">${t.name }</option>
+             </c:forEach>
+
+         </select>
+     </div>
+ </div>--%>
+<div class="form-group">
+    <div class="col-sm-offset-1 col-sm-10">
+        <button type="submit" class="btn btn-success">提交修改</button>
     </div>
-    <div>
-        <label>用户姓名：</label>
-        <input type="text" name="name" class="" value="${user.name}">
+    <div class="col-sm-offset-1 col-sm-10">
+        <a  style="padding-left: 10px" href="<%=request.getContextPath()%>/User/getAll">返回</a>
     </div>
-    <div>
-        <label>用户性别：</label>
-        <input type="text" name="sex" class="" value="${user.sex}">
-    </div>
-    <div>
-        <label>用户年龄：</label>
-        <input type="text" name="age" class="" value="${user.age}">
-    </div>
-    <div>
-        <label>用户地址：</label>
-        <input type="text" name="address" class="" value="${user.address}">
-    </div>
-    <div>
-        <label>用户电话：</label>
-        <input type="text" name="phone" class="" value="${user.phone}">
-    </div>
-    <div>
-        <input type="submit"  class="" value="确认">
-    </div>
+</div>
 </form>
 
 </body>

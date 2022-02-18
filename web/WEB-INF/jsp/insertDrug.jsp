@@ -10,46 +10,68 @@
 <html>
 <head>
     <title>修改用户</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
 </head>
 <body>
-<form action="${pageContext.request.contextPath}/Drug/insert">
-    <div>
-        <label>药品名称：</label>
-        <input type="text" name="name" class="" >
-    </div>
-    <div>
-        <label>药品类型：</label>
-        <input type="text" name="type" class="" >
-    </div>
-    <div>
-        <label>有效日期：</label>
-        <input type="date" name="date" class="">
-    </div>
-    <div>
-        <label>库存数量：</label>
-        <input type="text" name="stock" class="" >
-    </div>
-    <div>
-        <label>采购价格：</label>
-        <input type="text" name="pPrice" class="" >
-    </div>
-    <div>
-        <label>销售价格：</label>
-        <input type="text" name="sPrice" class="" >
-    </div>
-    <div>
-        <label>生产地址：</label>
-        <input type="text" name="address" class="" >
-    </div>
-    <div>
-        <label>药品描述：</label>
-        <input type="text" name="description" class="">
-    </div>
-    <div>
-        <input type="submit"  class="" value="确认">
-    </div>
-</form>
-
+<div class="container-fluid">
+    <jsp:include page="header.jsp"></jsp:include>
+    <br><br>
+    <form class="form-horizontal" action="<%=request.getContextPath()%>/Drug/insert" >
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">药品名称</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name="name"  required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">药品类型</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name="type" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">有效日期</label>
+            <div class="col-sm-6">
+                <input type="date" class="form-control"  name="date" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">库存数量</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="pPrice" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">采购价格</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="stock" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-1 control-label">销售价格</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name="sPrice" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">生产地址</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name="address"  >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">药品描述</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control"  name="description"  >
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+                <button type="submit" class="btn btn-success">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>
 

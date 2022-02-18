@@ -20,10 +20,7 @@
 
 
 <!--header-->
-<jsp:include page="/static/header.jsp"></jsp:include>
 <!--//header-->
-
-
 <!--account-->
 <div class="account">
     <div class="container">
@@ -34,12 +31,16 @@
             <c:if test="${!empty failMsg }">
                 <div class="alert alert-danger">${failMsg }</div>
             </c:if>--%>
-            <form action="<%=request.getContextPath()%>/admin/main" method="post">
+            <form action="${pageContext.request.contextPath}/admin/Login">
                 <div class="register-top-grid">
                     <h3>用户登录</h3>
+                    <c:if test="${!empty msg}">
+                        <div class="alert alert-success">${msg}</div>
+                    </c:if>
                     <div class="input">
                         <span>用户名 <label style="color:red;">*</label></span>
                         <input type="text" name="username" placeholder="请输入用户名" required="required">
+
                     </div>
                     <div class="input">
                         <span>密码 <label style="color:red;">*</label></span>
@@ -53,16 +54,13 @@
                     <div class="clearfix"> </div>
                 </div>
             </form>
-
             <div class="clearfix"> </div>
         </div>
     </div>
 </div>
 <!--//account-->
 <!--footer-->
-<jsp:include page="../../static/footer.jsp"></jsp:include>
+<%--<jsp:include page="footer.jsp"></jsp:include>--%>
 <!--//footer-->
-
-
 </body>
 </html>

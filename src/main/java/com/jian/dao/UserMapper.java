@@ -2,6 +2,7 @@ package com.jian.dao;
 
 import com.jian.pojo.Admin;
 import com.jian.pojo.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import java.util.Map;
  * @autHor jzj
  * @create 2022 01 02 16:24
  */
+@Repository
 public interface UserMapper {
     //获取全部用户
     List<User> getUserList();

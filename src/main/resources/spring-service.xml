@@ -20,9 +20,15 @@
     <bean id="UserServiceImpl" class="com.jian.service.IMPL.UserServiceImpl">
         <property name="userMapper" ref="userMapper"/>
     </bean>
-    <bean id="DrugServiceImpl" class="com.jian.service.IMPL.DrugServiceImpl">
-        <property name="drugMapper" ref="drugMapper"/>
+<!--    <bean id="DrugServiceImpl" class="com.jian.service.IMPL.DrugServiceImpl">-->
+<!--        <property name="drugMapper" ref="drugMapper"/>-->
+<!--    </bean>-->
+    <bean id="TypeServiceImpl" class="com.jian.service.IMPL.TypeServiceImpl">
+        <property name="typeMapper" ref="typeMapper"/>
     </bean>
+   <!-- <bean id="OrderServiceImpl" class="com.jian.service.IMPL.OrderServiceImpl">
+        <property name="orderMapper" ref="orderMapper"/>
+    </bean>-->
    <!-- 事务-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <!--注入数据源-->

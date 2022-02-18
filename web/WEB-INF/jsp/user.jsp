@@ -11,69 +11,67 @@
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
 <html>
 <head>
-    <title>Title</title>
+    <title>用户界面</title>
 </head>
 
 <body>
-<jsp:include page="top.jsp"></jsp:include>
-<jsp:include page="left.jsp"></jsp:include>
-    <div class="container">
-        <div class="row clearfix">
-            <div class="col-md-12 column">
-                <div class="page-header">
-                    <h3>
-                        <small>用户列表</small>
-                    </h3>
-                    <div>
-                        <ul style="align-content: center">
-                        <form action="${pageContext.request.contextPath}/User/select">
-                            <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入所查询姓名">&nbsp;&nbsp;
-                            <input type="submit" value="查询">
-                        </form>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row clearfix">
-            <div class="table-bordered">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>用户ID</th>
-                        <th>用户姓名</th>
-                        <th>用户性别</th>
-                        <th>用户年龄</th>
-                        <th>用户住址</th>
-                        <th>用户电话</th>
-                        <th>编辑用户</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <c:forEach var="user" items="${userList}">
-                            <tr>
-                                <td>${user.getId()}</td>
-                                <td>${user.getName()}</td>
-                                <td>${user.getSex()}</td>
-                                <td>${user.getAge()}</td>
-                                <td>${user.getAddress()}</td>
-                                <td>${user.getPhone()}</td>
-                                <td>
-                                    <a style="color: chocolate" href="${pageContext.request.contextPath}/User/toUpdate?id=${user.getId()}">修改</a>
-                                    <a style="color: chocolate" href="${pageContext.request.contextPath}/User/delete?id=${user.getId()}">删除</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
-                </table>
-            </div>
-            <div>
+<div class="container-fluid">
 
-            </div>
-        </div>
-    </div>
+    <jsp:include page="header.jsp"></jsp:include>
+    <ul role="tablist" class="nav nav-tabs">
+        <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/User/getAll">全部用户</a></li>
+        <li style="padding-left: 650px">
+            <form action="${pageContext.request.contextPath}/User/select">
+                <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入查询名称">&nbsp;&nbsp;
+                <input type="submit" value="查询">
+            </form>
+        </li>
+        <li style="padding-left: 814px">
+            <a class="btn btn-warning " href="<%=request.getContextPath()%>/User/toInsert">添加用户</a>
+        </li>
+    </ul><%--	<li <c:if test="${type==1 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=1">条幅推荐</a></li>
+		<li <c:if test="${type==2 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=2">热销推荐</a></li>
+		<li <c:if test="${type==3 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=3">新鲜花推荐</a></li>--%>
+    <br>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>用户ID</th>
+            <th>用户姓名</th>
+            <th>用户性别</th>
+            <th>用户年龄</th>
+            <th>用户住址</th>
+            <th>用户电话</th>
+            <th>编辑用户</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="user" items="${userList}">
+            <tr>
+                <td>${user.getId()}</td>
+                <td>${user.getName()}</td>
+                <td>${user.getSex()}</td>
+                <td>${user.getAge()}</td>
+                <td>${user.getAddress()}</td>
+                <td>${user.getPhone()}</td>
+                <td>
+                    <a style="color: chocolate" href="${pageContext.request.contextPath}/User/toUpdate?id=${user.getId()}">修改</a>
+                    <a style="color: chocolate" href="${pageContext.request.contextPath}/User/delete?id=${user.getId()}">删除</a>
+                </td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <br>
+    <%-- <jsp:include page="page.jsp">
+       &lt;%&ndash;  <jsp:param value="/admin/goods_list" name="url"/>
+         <jsp:param value="&type=${type }" name="param"/>&ndash;%&gt;
+     </jsp:include>--%>
+    <br>
+</div>
 </body>
 </html>

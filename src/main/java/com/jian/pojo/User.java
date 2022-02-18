@@ -20,6 +20,7 @@ import java.util.Objects;
 public class User {
     private int id;
     private String name;
+    private String password;
     private String sex;
     private int age;
     private String address;
@@ -28,6 +29,24 @@ public class User {
     public User() {
     }
 
+
+
+    public User(int id, String name, String password, String sex, int age, String address, String phone) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.sex = sex;
+        this.age = age;
+        this.address = address;
+        this.phone = phone;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     public String getName() {
         return name;
     }
@@ -81,12 +100,12 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id == user.id && age == user.age && Objects.equals(name, user.name) && Objects.equals(sex, user.sex) && Objects.equals(address, user.address) && Objects.equals(phone, user.phone);
+        return id == user.id && age == user.age && Objects.equals(name, user.name) && Objects.equals(password, user.password) && Objects.equals(sex, user.sex) && Objects.equals(address, user.address) && Objects.equals(phone, user.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, sex, age, address, phone);
+        return Objects.hash(id, name, password, sex, age, address, phone);
     }
 
     @Override
@@ -94,6 +113,7 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
                 ", address='" + address + '\'' +

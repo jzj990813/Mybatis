@@ -3,6 +3,7 @@ package com.jian.dao;
 import com.jian.pojo.Admin;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Map;
  * @autHor jzj
  * @create 2021 12 11 14:53
  */
+@Repository
 public interface AdminMapper {
      //获取全部管理员
      List<Admin> getAdminList();
