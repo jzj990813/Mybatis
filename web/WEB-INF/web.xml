@@ -46,4 +46,14 @@
         <listener-class>com.jian.utils.ContextFinalizer</listener-class>
     </listener>
 -->
+    <!--替换400和500的报错界面-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/error/404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/WEB-INF/error/500.jsp</location>
+    </error-page>
+
 </web-app>

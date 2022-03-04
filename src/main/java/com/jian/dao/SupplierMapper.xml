@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定的dao/mapper接口 接口路径-->
+<mapper namespace="com.jian.dao.SupplierMapper">
+    <select id="getAll" resultType="com.jian.pojo.Supplier" >
+        select s.id,s.name,t.name typeName,s.address,s.phone
+        from supplier s left join `type` t on s.typeId=t.id
+    </select>
+    <select id="getById" parameterType="int" resultType="com.jian.pojo.Supplier" >
+        select s.id,s.name,t.name typeName,s.address,s.phone
+        from supplier s left join `type` t on s.typeId=t.id
+        where s.id=#{id}
+    </select>
+    <update id="updateSup" parameterType="com.jian.pojo.Supplier">
+        update supplier set name =#{name},
+                            typeId=(select id from `type` where name=#{typeName}),
+                            address=#{address},
+                            phone=#{phone}
+        where  id=#{id}
+    </update>
+    <insert id="insertSup" parameterType="com.jian.pojo.Supplier">
+        insert into supplier (name,typeId,address,phone)
+        value (#{name},(select id from type where name=#{typeName}),#{address},#{phone})
+    </insert>
+
+    <delete id="deleteSup" parameterType="int">
+        delete from supplier where id=#{id}
+    </delete>
+</mapper>

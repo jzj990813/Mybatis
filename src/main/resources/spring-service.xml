@@ -23,9 +23,9 @@
 <!--    <bean id="DrugServiceImpl" class="com.jian.service.IMPL.DrugServiceImpl">-->
 <!--        <property name="drugMapper" ref="drugMapper"/>-->
 <!--    </bean>-->
-    <bean id="TypeServiceImpl" class="com.jian.service.IMPL.TypeServiceImpl">
+  <!--  <bean id="TypeServiceImpl" class="com.jian.service.IMPL.TypeServiceImpl">
         <property name="typeMapper" ref="typeMapper"/>
-    </bean>
+    </bean>-->
    <!-- <bean id="OrderServiceImpl" class="com.jian.service.IMPL.OrderServiceImpl">
         <property name="orderMapper" ref="orderMapper"/>
     </bean>-->

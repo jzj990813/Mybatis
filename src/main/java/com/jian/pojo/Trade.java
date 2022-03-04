@@ -4,11 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Type {
+public class Trade {
     private int id;
-    private String name;
-    private String description;
+    private String supName;
+    private String drugName;
+    private int sum;
+    private int money;
+    private Date date;
 }

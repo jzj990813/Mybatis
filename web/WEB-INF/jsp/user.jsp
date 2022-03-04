@@ -7,15 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%--标签库--%>
-<%--美化页面bootstra--%>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
-<link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
+
 <html>
 <head>
     <title>用户界面</title>
+    <%--美化页面bootstra--%>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
+  <%--  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">--%>
 </head>
 
 <body>
@@ -38,7 +39,6 @@
 		<li <c:if test="${type==3 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=3">新鲜花推荐</a></li>--%>
     <br>
     <table class="table table-bordered table-hover">
-        <thead>
         <tr>
             <th>用户ID</th>
             <th>用户姓名</th>
@@ -48,8 +48,6 @@
             <th>用户电话</th>
             <th>编辑用户</th>
         </tr>
-        </thead>
-        <tbody>
         <c:forEach var="user" items="${userList}">
             <tr>
                 <td>${user.getId()}</td>
@@ -59,12 +57,13 @@
                 <td>${user.getAddress()}</td>
                 <td>${user.getPhone()}</td>
                 <td>
+                    <div class="text-center">
                     <a style="color: chocolate" href="${pageContext.request.contextPath}/User/toUpdate?id=${user.getId()}">修改</a>
                     <a style="color: chocolate" href="${pageContext.request.contextPath}/User/delete?id=${user.getId()}">删除</a>
+                    </div>
                 </td>
             </tr>
         </c:forEach>
-        </tbody>
     </table>
     <br>
     <%-- <jsp:include page="page.jsp">

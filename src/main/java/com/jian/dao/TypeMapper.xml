@@ -13,4 +13,13 @@
     <select id="selectType" resultType="com.jian.pojo.Type" >
         select * from `type`
     </select>
+    <update id="updateType"  parameterType="com.jian.pojo.Type">
+        update type  set `name`=#{name},description=#{description} where id=#{id}
+    </update>
+    <delete id="deleteType" parameterType="int">
+        delete  from  type  where id=#{id}
+    </delete>
+    <select id="selectById" parameterType="int" resultType="com.jian.pojo.Type">
+        select * from type where id=#{id}
+    </select>
 </mapper>

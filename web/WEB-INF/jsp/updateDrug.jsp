@@ -11,6 +11,15 @@
 <head>
     <title>修改用户</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+   <script>
+       function change() {
+           let sheet = $("#role").val();//下拉框
+           alert(sheet)
+           $("#state").val(sheet);
+       }
+   </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -18,7 +27,7 @@
     <jsp:include page="header.jsp"></jsp:include>
 
     <br><br>
-    <form class="form-horizontal" action="${pageContext.request.contextPath}/Drug/update?id=${drug.getId()}">
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/Drug/update">
         <div class="form-group">
             <label  class="col-sm-1 control-label">药品ID：</label>
             <div class="col-sm-6">
@@ -36,7 +45,16 @@
             <div class="form-group">
             <label  class="col-sm-1 control-label">药品类型：</label>
             <div class="col-sm-6">
-             <input type="text" class="form-control"   name="type"  value="${drug.type}" required="required">
+<%--<input type="text" class="form-control"   name="type"  value="${drug.type}" required="required">--%>
+
+            <input type="text" class="hidden" id="state" name="type"  value="${drug.type}"/>
+            <!--一个普通的下拉框-->
+            <select name="role" id="role" onchange="change()">
+                <c:forEach var="types" items="${typeList}">
+                    <option selected="selected" name="type" value="${types.name}">${types.name}</option>
+                </c:forEach>
+            </select>
+
             </div>
             </div>
             <div class="form-group">
@@ -76,7 +94,6 @@
             </div>
              </div>
 
-        </div>
        <%-- <div class="form-group">
             <label for="select_topic" class="col-sm-1 control-label">类目</label>
             <div class="col-sm-6">
@@ -95,5 +112,8 @@
         </div>
     </form>
 </div>
+
+
+
 </body>
 </html>

@@ -34,25 +34,25 @@
         <div class="form-group">
             <label  class="col-sm-1 control-label">用户性别：</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"   name="type"  value="${user.sex}" required="required">
+                <input type="text" class="form-control"   name="sex"  value="${user.sex}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">用户年龄：</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"   name="date"  value="${user.age}" required="required">
+                <input type="text" class="form-control"   name="age"  value="${user.age}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">用户地址：</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"   name="stock"  value="${user.address}" required="required">
+                <input type="text" class="form-control"   name="address"  value="${user.address}" required="required">
             </div>
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">用户电话：</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"   name="pPrice"  value="${user.phone}" required="required">
+                <input type="text" class="form-control"   name="phone"  value="${user.phone}" required="required">
             </div>
         </div>
 

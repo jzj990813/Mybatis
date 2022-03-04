@@ -9,4 +9,8 @@ import java.util.List;
 public interface TypeMapper {
     int addType();
     List<Type> selectType();
+
+    Type selectById(int id);
+   int updateType(Type type);
+   int deleteType(int id);
 }
