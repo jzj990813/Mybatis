@@ -8,6 +8,13 @@
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
 </head>
+<style>
+    body {
+       /* background: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg') no-repeat;
+        background-size: 100% 130%;*/
+        background-color: #8ce78a;
+    }
+</style>
 <body>
 <div class="container-fluid">
 
@@ -15,10 +22,10 @@
 
 
     <ul role="tablist" class="nav nav-tabs">
-        <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/Drug/getAll">全部药品</a></li>
+        <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/Drug/select1?page=1">全部药品</a></li>
         <li style="padding-left: 650px">
-                <form action="${pageContext.request.contextPath}/">
-                    <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入查询名称">&nbsp;&nbsp;
+                <form action="${pageContext.request.contextPath}/Drug/select">
+                    <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入查询名称">
                     <input type="submit" value="查询">
                 </form>
         </li>
@@ -69,7 +76,46 @@
       &lt;%&ndash;  <jsp:param value="/admin/goods_list" name="url"/>
         <jsp:param value="&type=${type }" name="param"/>&ndash;%&gt;
     </jsp:include>--%>
+
+
     <br>
-</div>
+        <div class="row justify-content-center">
+            <div>
+                <nav>
+                    <ul class="pagination">
+                        <li class="page-item ${page==1?'disabled':''}"><a class="page-link"
+                                                                          href="<c:url value="/Drug/select1?page=${page-1>1?page-1:1}"/>">上一页</a>
+                        </li>
+                        <c:if test="${page!=1}">
+                            <li class="page-item">
+                                <a class="page-link" href="<c:url value="/Drug/select1?page=1"/>">1</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${page>2}">
+                            <li class="page-item disabled">
+                                <a class="page-link">...</a>
+                            </li>
+                        </c:if>
+                        <li class="page-item active">
+                            <a class="page-link" href="<c:url value="/Drug/select1?page=${page}"/>">${page}</a>
+                        </li>
+                        <c:if test="${pagination.getPageCount()-page>1 && pagination.getPageCount()!=null}">
+                            <li class="page-item disabled">
+                                <a class="page-link">...</a>
+                            </li>
+                        </c:if>
+                        <c:if test="${page!=pagination.getPageCount()}">
+                            <li class="page-item">
+                                <a class="page-link" href="<c:url value="/Drug/select1?page=${pagination.getPageCount()}"/>">${pagination.getPageCount()}</a>
+                            </li>
+                        </c:if>
+
+                        <li class="page-item ${page==pagination.getPageCount()?'disabled':''}">
+                            <a class="page-link" href="<c:url value="/Drug/select1?page=${page+1<pagination.getPageCount()?page+1:pagination.getPageCount()}"/>">下一页</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
 </body>
 </html>

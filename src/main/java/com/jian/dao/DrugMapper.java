@@ -20,5 +20,6 @@ public interface DrugMapper {
     List<Drug> getDrugLike(String value);
     //分页查询
     List<Drug> getDrugLimit(Map<String,Integer> map);
+    int count();
 
 }

@@ -14,10 +14,54 @@
         select * from `order`
     </select>
     <select id="selectAll" resultType="com.jian.pojo.Order">
-        select o.id,u.name uesrName,d.name drugName,t.name typeName,o.money,o.date
+        select o.id,u.name userName,d.name drugName,t.name typeName,`sum`,o.money,o.date
         from  `order` o
                   left join `user` u on o.userid=u.id
                   left join `type` t on o.Typeid=t.id
                   left join `drug` d on o.drugId=d.id
     </select>
+    <select id="userList" parameterType="String" resultType="com.jian.pojo.Order">
+        select o.id,u.name userName,d.name drugName,t.name typeName,`sum`,o.money,o.date
+        from  `order` o
+                  left join `user` u on o.userid=u.id
+                  left join `type` t on o.Typeid=t.id
+                  left join `drug` d on o.drugId=d.id
+        where u.name like "%"#{name}"%"
+    </select>
+
+    <select id="getById" parameterType="int" resultType="com.jian.pojo.Order">
+        select o.id,u.name userName,d.name drugName,t.name typeName,`sum`,o.money,o.date
+        from  `order` o
+                  left join `user` u on o.userid=u.id
+                  left join `type` t on o.Typeid=t.id
+                  left join `drug` d on o.drugId=d.id
+        where o.id=#{id}
+    </select>
+    <delete id="deleteOrder" parameterType="int">
+        delete from `order` where id=#{id}
+    </delete>
+    <insert id="insertOrder" parameterType="com.jian.pojo.Order">
+        insert into `order` (userId,drugId,typeId,`sum`,money,date)
+        values((select id from `user`  where name=#{userName}),
+               (select id from `drug`	where name=#{drugName}),
+               (select typeId from `drug` where name=#{drugName}),
+              #{sum},
+              (select pPrice*#{sum} money from drug where name=#{drugName}),
+              #{date})
+    </insert>
+
+   <!--  <insert id="insertOrder" parameterType="com.jian.pojo.Order">
+        insert into `order` (userId,drugId,typeId,money,`date`)values(#{userName},#{drugName},#{typeName},#{money},#{date});
+    </insert>-->
+    <!--update `order` o set o.money=(select pPrice*5 money from drug where name='阿莫西林') where id=1-->
+    <update id="updateOrder" parameterType="com.jian.pojo.Order">
+update `order` set userId=(select id from `user`  where name=#{userName}),
+                   drugId=(select id from `drug`	where name=#{drugName}),
+                   typeId=(select typeId from `drug` where name=#{drugName}),
+                   sum=#{sum},
+                   money=(select pPrice*#{sum} money from drug where name=#{drugName}),
+                   date=#{date}
+                   where id=#{id}
+    </update>
+
 </mapper>

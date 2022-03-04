@@ -5,7 +5,7 @@ package com.jian.pojo;
  * @autHor jzj
  * @create 2021 12 11 14:48
  */
-public class Admin {
+public class Admin   {
     private int id;
     private String name;
    private  String password;

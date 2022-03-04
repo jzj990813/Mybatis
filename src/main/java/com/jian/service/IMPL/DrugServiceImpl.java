@@ -51,4 +51,10 @@ public class DrugServiceImpl implements DrugService {
         return drugMapper.getDrugLimit(map);
     }
 
+    @Override
+    public int count() {
+        return drugMapper.count();
+    }
+
+
 }

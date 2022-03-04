@@ -9,9 +9,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%><%--标签库--%>
 <html>
 <head>
-    <title>修改用户</title>
+    <title>添加药品</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
 </head>
+<script>
+    function change() {
+        let sheet = $("#role").val();//下拉框
+        alert(sheet)
+        $("#state").val(sheet);
+    }
+</script>
 <body>
 <div class="container-fluid">
     <jsp:include page="header.jsp"></jsp:include>
@@ -25,9 +32,13 @@
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">药品类型</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control"  name="type" >
-            </div>
+            <input type="text" class="hidden" id="state" name="type"  value="抗生素类"/>
+            <!--一个普通的下拉框-->
+            <select name="role" id="role" onchange="change()">
+                <c:forEach var="types" items="${typeList}">
+                    <option selected="selected" name="type" value="${types.name}">${types.name}</option>
+                </c:forEach>
+            </select>
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">有效日期</label>

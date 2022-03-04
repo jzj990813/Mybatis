@@ -8,4 +8,10 @@ import java.util.List;
 public interface OrderMapper {
     List<Order> getAll();
     List<Order> selectAll();
+    List<Order> userList(String name);
+    int  deleteOrder(int id);
+    int insertOrder(Order order);
+    int updateOrder(Order order);
+    Order getById(int id);
+
 }

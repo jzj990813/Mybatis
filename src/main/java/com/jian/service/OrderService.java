@@ -9,4 +9,8 @@ import java.util.List;
 public interface OrderService {
     List<Order> getAll();
     List<Order> selectAll();
+    List<Order> userList(String name);
+    int insertOrder(Order order);
+    int updateOrder(Order order);
+    Order getById(int id);
 }

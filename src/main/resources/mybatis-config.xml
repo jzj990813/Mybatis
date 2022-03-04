@@ -4,24 +4,34 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--核心配置文件 连接数据库-->
 <configuration>
-
     <!--引入外部配置文件-->
-    <properties resource="db.properties">
+    <properties resource="db.properties"></properties>
 
-    </properties>
 
     <!--配置日志-->
     <settings>
         <setting name="logImpl" value="LOG4J"/>
     </settings>
 
+
     <!--类型别名  可给实体类起别名-->
     <typeAliases>
         <typeAlias type="com.jian.pojo.Admin" alias="admin"></typeAlias>
         <typeAlias type="com.jian.pojo.User" alias="user"></typeAlias>
+        <typeAlias type="com.jian.pojo.Order" alias="order"></typeAlias>
+        <typeAlias type="com.jian.pojo.Supplier" alias="supplier"></typeAlias>
+        <typeAlias type="com.jian.pojo.Drug" alias="drug"></typeAlias>
+        <typeAlias type="com.jian.pojo.Type" alias="type"></typeAlias>
         <!--扫描一个包 扫描实体类 起首字母小写的别名
+
         <package name="com.jian.pojo"/>-->
     </typeAliases>
+ <!--   <plugins>
+            <plugin interceptor="com.github.pagehelper.PageInterceptor">
+                &lt;!&ndash; 设置数据库类型 Oracle,Mysql,MariaDB,SQLite,Hsqldb,PostgreSQL六种数据库&ndash;&gt;
+                <property name="helperDialect" value="mysql"/>
+            </plugin>
+    </plugins>-->
 
     <environments default="development"><!--可多套环境 default为默认选择哪套-->
 
@@ -55,6 +65,10 @@
     <mappers>
         <mapper resource="com/jian/dao/AdminMapper.xml" ></mapper>
         <mapper resource="com/jian/dao/UserMapper.xml"></mapper>
+        <mapper resource="com/jian/dao/DrugMapper.xml" ></mapper>
+        <mapper resource="com/jian/dao/OrderMapper.xml"></mapper>
+        <mapper resource="com/jian/dao/SupplierMapper.xml" ></mapper>
+        <mapper resource="com/jian/dao/TypeMapper.xml"></mapper>
     </mappers>
 
 

@@ -3,6 +3,7 @@ package com.jian.service;
 import com.jian.pojo.Drug;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,5 +23,7 @@ public interface DrugService {
     List<Drug> getDrugLike(String value);
     //分页查询
     List<Drug> getDrugLimit(Map<String,Integer> map);
+    //统计总数
+    int count();
 
 }
