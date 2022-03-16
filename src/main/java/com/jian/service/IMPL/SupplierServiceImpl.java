@@ -34,4 +34,9 @@ public class SupplierServiceImpl implements SupplierService {
     public int deleteSup(int id) {
         return supplierMapper.deleteSup(id);
     }
+
+    @Override
+    public List<Supplier> selectLike(String name) {
+        return supplierMapper.selectLike(name);
+    }
 }

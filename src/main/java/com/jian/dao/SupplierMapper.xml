@@ -28,4 +28,9 @@
     <delete id="deleteSup" parameterType="int">
         delete from supplier where id=#{id}
     </delete>
+    <select id="selectLike" parameterType="String" resultType="com.jian.pojo.Supplier">
+        select s.id,s.name,t.name typeName,s.address,s.phone
+        from supplier s left join `type` t on s.typeId=t.id
+        where s.name like "%"#{name}"%"
+    </select>
 </mapper>

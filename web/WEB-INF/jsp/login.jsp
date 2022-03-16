@@ -221,7 +221,7 @@
 <body>
 <div id="login_box">
     <h2>LOGIN</h2>
-    <form action="${pageContext.request.contextPath}/admin/Login">
+    <form action="${pageContext.request.contextPath}/admin/userLogin">
     <div id="input_box">
         <input type="text" name="username" placeholder="请输入用户名" required="required">
     </div>

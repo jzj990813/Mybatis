@@ -19,7 +19,7 @@
     </select>
     <!--插入-->
     <insert id="addUser" parameterType="com.jian.pojo.User">
-        insert into user(name,sex,age,address,phone) value (#{name},#{sex},#{age},#{address},#{phone})
+        insert into user(name,password,sex,age,address,phone) value (#{name},#{password},#{sex},#{age},#{address},#{phone})
     </insert>
     <!--修改-->
     <update id="updateUser" parameterType="com.jian.pojo.User">
@@ -32,11 +32,15 @@
         delete from user where id=#{id}
     </delete>
     <!--根据名字模糊查询-->
-    <select id="getUserLike" resultType="com.jian.pojo.User" >
+    <select id="getUserLike" parameterType="String" resultType="com.jian.pojo.User"  >
         select * from `user` where name like "%"#{value}"%"
     </select>
     <!--分页查询-->
     <select id="getUserLimit"  parameterType="map" resultType="User">
         select * from `user` limit #{startIndex},#{pageSize}
+    </select>
+    <!--根据名字模糊查询-->
+    <select id="getUserName"  parameterType="String"  resultType="com.jian.pojo.User"  >
+        select * from `user` where name=#{value}
     </select>
 </mapper>

@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService {
     public List<User> getUserLimit(Map<String, Integer> map) {
         return userMapper.getUserLimit(map);
     }
+
+    @Override
+    public User getUserName(String name) {
+        return userMapper.getUserName(name);
+    }
 }

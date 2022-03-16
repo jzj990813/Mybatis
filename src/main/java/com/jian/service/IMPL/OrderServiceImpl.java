@@ -46,4 +46,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.getById(id);
     }
 
+    @Override
+    public int deleteOrder(int id) {
+        return orderMapper.deleteOrder(id);
+    }
+
+
 }

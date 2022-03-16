@@ -22,7 +22,7 @@
     <ul role="tablist" class="nav nav-tabs">
         <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/Supplier/getAll">合作伙伴</a></li>
         <li style="padding-left: 650px">
-            <form action="${pageContext.request.contextPath}">
+            <form action="${pageContext.request.contextPath}/Supplier/selectLike">
                 <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入查询名称">&nbsp;&nbsp;
                 <input type="submit" value="查询">
             </form>

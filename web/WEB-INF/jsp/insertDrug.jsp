@@ -32,6 +32,7 @@
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">药品类型</label>
+            <div class="col-sm-6">
             <input type="text" class="hidden" id="state" name="type"  value="抗生素类"/>
             <!--一个普通的下拉框-->
             <select name="role" id="role" onchange="change()">
@@ -39,6 +40,7 @@
                     <option selected="selected" name="type" value="${types.name}">${types.name}</option>
                 </c:forEach>
             </select>
+        </div>
         </div>
         <div class="form-group">
             <label  class="col-sm-1 control-label">有效日期</label>

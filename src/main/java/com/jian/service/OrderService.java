@@ -13,4 +13,5 @@ public interface OrderService {
     int insertOrder(Order order);
     int updateOrder(Order order);
     Order getById(int id);
+    int deleteOrder(int id);
 }

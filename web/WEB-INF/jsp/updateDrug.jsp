@@ -76,7 +76,7 @@
             </div>
             </div>
             <div class="form-group">
-            <label  class="col-sm-1 control-label">销售价格：}</label>
+            <label  class="col-sm-1 control-label">销售价格：</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"   name="sPrice"  value="${drug.sPrice}" required="required">
             </div>

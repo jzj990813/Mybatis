@@ -46,7 +46,9 @@ public String getAll(Model model){
 
 }
     @RequestMapping("/toInsert")
-    public String toInsert(){
+    public String toInsert(Model model){
+        List<Drug> drugList = drugService.getDrugList();
+        model.addAttribute("drugList",drugList);
         return "insertOrder";
     }
 
@@ -75,4 +77,10 @@ public String getAll(Model model){
         return "redirect:/Order/getAll";
     }
 
+
+    @RequestMapping("/delete")
+    public String delete(int id){
+    orderService.deleteOrder(id);
+    return "redirect:/Order/getAll";
+    }
 }

@@ -19,6 +19,5 @@
 <body>
 ${username}
 <%--此页当主页--%>
-<a href="${pageContext.request.contextPath}/Drug/select1?page=1">用户页面</a>
-</body>
+<a href="${pageContext.request.contextPath}/admin/buy">用户页面</a></body>
 </html>

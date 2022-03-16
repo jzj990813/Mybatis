@@ -64,4 +64,11 @@ public class SupplierController {
         return "redirect:/Supplier/getAll";
     }
 
+
+    @RequestMapping("/selectLike")
+    public String seleteLike(Model model,String selectName){
+        List<Supplier> suppliers = supplierService.selectLike(selectName);
+        model.addAttribute("supList",suppliers);
+        return "supplier";
+    }
 }

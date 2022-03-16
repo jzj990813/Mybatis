@@ -64,4 +64,14 @@ update `order` set userId=(select id from `user`  where name=#{userName}),
                    where id=#{id}
     </update>
 
+
+    <select id="selectOrder" parameterType="String" resultType="int">
+        select o.id,u.name userName,d.name drugName,t.name typeName,`sum`,o.money,o.date
+        from  `order` o
+                  left join `user` u on o.userid=u.id
+                  left join `type` t on o.Typeid=t.id
+                  left join `drug` d on o.drugId=d.id
+        where u.name like "%"#{name}"%"
+    </select>
+
 </mapper>

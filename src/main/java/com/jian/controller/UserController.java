@@ -2,6 +2,7 @@ package com.jian.controller;
 import com.jian.pojo.User;
 import com.jian.service.UserService;
 import com.jian.service.IMPL.UserServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +17,8 @@ import java.util.List;
  */@Controller
 @RequestMapping("/User")
 public class UserController {
-    public UserService userService=new UserServiceImpl();
-   public UserController(@Qualifier("UserServiceImpl")UserService userService){
-       this.userService=userService;
-   }
-
+     @Autowired
+    public UserService userService;
    @RequestMapping("/getAll")
     public String getAll(Model model){
        List <User> userList=userService.getUserList();

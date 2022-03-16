@@ -26,4 +26,5 @@ public interface UserService {
     List<User> getUserLike(String value);
     //分页查询
     List<User> getUserLimit(Map<String,Integer> map);
+    User getUserName(String name);
 }

@@ -1,14 +1,21 @@
 package com.jian.controller;
 
 import com.jian.pojo.Drug;
+import com.jian.pojo.Order;
 import com.jian.pojo.Type;
 import com.jian.service.DrugService;
+import com.jian.service.OrderService;
 import com.jian.service.TypeService;
 import com.jian.utils.PaginationHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,9 +29,18 @@ public class DrugController {
     }*/
     @Autowired
     private TypeService typeService;
+    @Autowired
+    private OrderService orderService;
     private static PaginationHelper pagination=new PaginationHelper();
     int m=5;
     int i=0;
+    private static List<Drug>  drugList=new ArrayList<>();
+    private static List<Integer>  numberList=new ArrayList<>();
+
+
+
+
+
     @RequestMapping("/getAll")
     public String getAll(Model model){
         List<Drug> drugList = drugService.getDrugList();
@@ -128,7 +144,51 @@ public class DrugController {
         return "drug";
     }
 
+    @RequestMapping("/shoppingDrug")
+    public String buy(int id,String number,HttpSession session){
+        Drug drug = drugService.getDrugByID(id);
+        int stock = drug.getStock();
+        System.out.println(number);
+        drugList.add(drug);
+        int size = drugList.size();
+        Integer integer = Integer.valueOf(number);
+        numberList.add(integer);
+        session.setAttribute("number",numberList);
+        session.setAttribute("drug",drugList);
+        session.setAttribute("size",size);
+        stock=stock-integer;
+        drug.setStock(stock);
+        drugService.updateDrug(drug);
+        return "redirect:/admin/buy";
+    }
+
+@RequestMapping("/shopping")
+    public String shopping(){
+        return "shopping";
+}
 
 
+@RequestMapping("/buyDrug")
+public String buyDrug(HttpSession session,int id,String number){
+    Drug drug = drugService.getDrugByID(id);
+    String name = drug.getName();
+    int stock = drug.getStock();
+    Integer integer = Integer.valueOf(number);
+    Order order = new Order();
+    order.setDrugName(name);
+    if (session.getAttribute("username")==null){
+        return "login";
+    }else {
+        order.setUserName((String) session.getAttribute("username"));
+        order.setSum(integer);
+        Date date=new Date(System.currentTimeMillis());
+        order.setDate((date));
+        orderService.insertOrder(order);
+        stock=stock-integer;
+        drug.setStock(stock);
+        drugService.updateDrug(drug);
+        return "redirect:/admin/buy";
+    }
 
+}
 }

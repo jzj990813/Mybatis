@@ -22,4 +22,7 @@
     <select id="selectById" parameterType="int" resultType="com.jian.pojo.Type">
         select * from type where id=#{id}
     </select>
+    <insert id="insertType" parameterType="com.jian.pojo.Type">
+        insert  into `type`(name,description) value(#{name},#{description})
+    </insert>
 </mapper>

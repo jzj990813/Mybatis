@@ -12,6 +12,13 @@
     <title>修改订单</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
 </head>
+<script>
+    function change() {
+        let sheet = $("#role").val();//下拉框
+        alert(sheet)
+        $("#state").val(sheet);
+    }
+</script>
 <body>
 <div class="container-fluid">
     <jsp:include page="header.jsp"></jsp:include>
@@ -29,18 +36,31 @@
                 <input type="text" class="form-control"  name="userName" >
             </div>
         </div>
-        <div class="form-group">
-            <label  class="col-sm-1 control-label">药名</label>
+            <div class="form-group">
+            <label class="col-sm-1 control-label">药品名称</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" name="drugName" >
+                <input type="text" class="hidden" id="state" name="drugName"  value="九九九感冒灵"/>
+                <!--一个普通的下拉框-->
+                <select name="role" id="role" onchange="change()">
+                    <c:forEach var="drugs" items="${drugList}">
+                        <option selected="selected" name="type" value="${drugs.name}">${drugs.name}</option>
+                    </c:forEach>
+                </select>
             </div>
-        </div>
-        <div class="form-group">
+            </div>
+
+        <%--<div class="form-group">
             <label class="col-sm-1 control-label">类型</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control"  name="typeName" >
+                 <input type="text" class="hidden" id="state" name="drugName"  value=""/>
+            <!--一个普通的下拉框-->
+            <select name="role" id="role" onchange="change()">
+                <c:forEach var="drugs" items="${drugList}">
+                    <option selected="selected" name="type" value="${drugs.name}">${drugs.name}</option>
+                </c:forEach>
+            </select>
             </div>
-        </div>
+        </div>--%>
             <div class="form-group">
                 <label  class="col-sm-1 control-label">数量</label>
                 <div class="col-sm-6">

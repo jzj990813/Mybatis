@@ -11,4 +11,5 @@ public interface SupplierService {
     int updateSup(Supplier supplier);
     int insertSup(Supplier supplier);
     int deleteSup(int id);
+    List<Supplier> selectLike(String name);
 }

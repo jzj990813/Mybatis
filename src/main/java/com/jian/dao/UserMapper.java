@@ -27,5 +27,6 @@ public interface UserMapper {
     List<User> getUserLike(String value);
     //分页查询
     List<User> getUserLimit(Map<String,Integer> map);
-
+    //全名查
+    User getUserName(String name);
 }

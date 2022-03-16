@@ -9,7 +9,7 @@
 <nav class="navbar navbar-default" role="navigation" style="background-color: wheat;width: 100%">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="<%=request.getContextPath()%>/Drug/select1?page=1">药店管理系统</a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/admin/buy">药店管理系统</a>
         </div>
         <div>
             <ul class="nav navbar-nav">

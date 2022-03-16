@@ -59,7 +59,7 @@
                 <td>
                     <div class="text-center">
                         <a class="btn btn-warning" href="${pageContext.request.contextPath}/Order/toUpdate?id=${order.getId()}">修改</a>
-                        <a class="btn btn-warning hidden" href="${pageContext.request.contextPath}//delete?id=${order.getId()}">删除</a>
+                        <a class="btn btn-warning hidden" href="${pageContext.request.contextPath}/Order/delete?id=${order.getId()}">删除</a>
                     </div>
                 </td>
             </tr>
