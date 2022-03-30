@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace=绑定的dao/mapper接口 接口路径-->
+<mapper namespace="com.jian.dao.DealMapper">
+    <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=参数类型  #{ }参数通配符-->
+    <select id="getDealList" parameterType="int" resultType="com.jian.pojo.Deal" >
+        select a.name adminName,s.name supName,r.name drugName,d.count,gmv,d.date
+        from  `deal` d
+                  left join `admin` a on d.adminId=a.id
+                  left join `supplier` s on d.supplierId=s.id
+                  left join  `drug` r on d.drugId=r.id
+        where d.id=#{id}
+    </select>
+    <!--插入-->
+    <insert id="insertDeal" parameterType="com.jian.pojo.Deal">
+
+
+    </insert>
+</mapper>

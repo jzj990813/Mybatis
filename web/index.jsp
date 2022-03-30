@@ -11,16 +11,17 @@
     <title>$Title$</title>
   </head>
   <body>
-  <a href="${pageContext.request.contextPath}/admin/goLogin">进入游客页面</a>
-  <a href="${pageContext.request.contextPath}/admin/main">进入管理员页面</a>
+  <a href="${pageContext.request.contextPath}/admin/userGoLogin">进入主页面</a>
+  <a href="${pageContext.request.contextPath}/admin/goLogin">进入管理员页面</a>
+  <a href="${pageContext.request.contextPath}/User/toEnroll">注册</a>
 
-<%--上传文件  enctype="multipart/form-data"--%>
+<%--上传文件  enctype="multipart/form-data"
   <form action="${pageContext.request.contextPath}/file/upload" enctype="multipart/form-data" method="post">
      <input type="file" name="file"/>
     <input type="submit" name="upload" />
   </form>
-<%--  文件下载--%>
-  <a href="${pageContext.request.contextPath}/static/1.png">下载 </a>
+  文件下载
+  <a href="${pageContext.request.contextPath}/static/1.png">下载 </a>--%>
 
 
 

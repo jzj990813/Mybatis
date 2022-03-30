@@ -64,11 +64,20 @@
     </mappers>-->
     <mappers>
         <mapper resource="com/jian/dao/AdminMapper.xml" ></mapper>
+
         <mapper resource="com/jian/dao/UserMapper.xml"></mapper>
+
         <mapper resource="com/jian/dao/DrugMapper.xml" ></mapper>
+
         <mapper resource="com/jian/dao/OrderMapper.xml"></mapper>
+
         <mapper resource="com/jian/dao/SupplierMapper.xml" ></mapper>
+
         <mapper resource="com/jian/dao/TypeMapper.xml"></mapper>
+
+        <mapper resource="com/jian/dao/DealMapper.xml"></mapper>
+       <!-- <mapper resource="com/jian/dao/*Mapper.xml"/>-->
+
     </mappers>
 
 

@@ -65,16 +65,16 @@ public class AdminController {
 
 
 
-   @RequestMapping("/Login")
+   @RequestMapping("/AdminLogin")
     public String login(HttpSession session,String username,String password,Model model){
        Admin adminLike = adminService.getAdminLike(username);
        String msg="";
        if (adminLike!=null){
-           if(adminLike.getNaem().equals(username) && adminLike.getPassword().equals(password)) {
+           if(adminLike.getName().equals(username) && adminLike.getPassword().equals(password)) {
                //把用户信息存在session中
                session.setAttribute("username", username);
                model.addAttribute("username", username);
-               return "main";
+               return"redirect:/Drug/select1?page=1";
            } else {
                msg="输入有误";
                model.addAttribute(msg);
@@ -89,7 +89,7 @@ public class AdminController {
         session.removeAttribute("username");
         session.removeAttribute("number");
         session.removeAttribute("drug");
-        return "login";
+        return "userLogin";
     }
 
     @RequestMapping("/buy")
@@ -98,6 +98,18 @@ public class AdminController {
         model.addAttribute("drugList",drugList);
         return "buy";
     }
+
+
+
+
+
+
+
+    @RequestMapping("/userGoLogin")
+    public String userGoLogin(){
+        return "userLogin";
+    }
+
     @RequestMapping("/userLogin")
     public String userLogin(HttpSession session,String username,String password,Model model) {
         User user = userService.getUserName(username);
@@ -111,10 +123,10 @@ public class AdminController {
                 } else {
                     msg = "输入有误";
                     model.addAttribute(msg);
-                    return "login";
+                    return "userLogin";
                 }
             }
-            return "login";
+            return "userLogin";
 
         }
 }

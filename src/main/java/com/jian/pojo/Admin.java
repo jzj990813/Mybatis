@@ -9,6 +9,16 @@ public class Admin   {
     private int id;
     private String name;
    private  String password;
+   private int Permissions;//权限  用于判断是否展示后台界面
+
+
+
+    public Admin(int id, String name, String password, int permissions) {
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        Permissions = permissions;
+    }
 
     public Admin() {
     }
@@ -18,6 +28,21 @@ public class Admin   {
         this.name =name;
         this.password = password;
     }
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getPermissions() {
+        return Permissions;
+    }
+
+    public void setPermissions(int permissions) {
+        Permissions = permissions;
+    }
 
     public int getId() {
         return id;
@@ -25,14 +50,6 @@ public class Admin   {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNaem() {
-        return name;
-    }
-
-    public void setNaem(String naem) {
-        this.name = naem;
     }
 
     public String getPassword() {
@@ -47,8 +64,9 @@ public class Admin   {
     public String toString() {
         return "Admin{" +
                 "id=" + id +
-                ", naem='" + name + '\'' +
+                ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
+                ", Permissions=" + Permissions +
                 '}';
     }
 }

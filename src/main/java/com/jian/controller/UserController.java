@@ -89,4 +89,28 @@ public class UserController {
     }
 
 
+
+
+
+    @RequestMapping("/toEnroll")
+    public String toEnroll(){
+        return "Enroll";
+    }
+
+    @RequestMapping("/Enroll")
+    public String Enroll(User user){
+       //一个电话号码只能注册一次
+        User use = userService.selectPhone(user.getPhone());
+        System.out.println(use);
+        System.out.println(user);
+        if (use!=null) {
+            return "Enroll";
+        }else {
+            System.out.println(user);
+            userService.addUser(user);
+            return "redirect:/admin/userGoLogin";
+        }
+
+    }
+
 }

@@ -15,17 +15,30 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session=request.getSession();
-        if (request.getRequestURI().contains("Login")){
+        if (request.getRequestURI().contains("login")){
             return true;
         }
         if (request.getRequestURI().contains("goLogin")){
+            return true;
+        }
+        if (request.getRequestURI().contains("userGoLogin")){
+            return true;
+        }
+        if (request.getRequestURI().contains("userLogin")){
+            return true;
+        }
+
+        if (request.getRequestURI().contains("toEnroll")){
+            return true;
+        }
+        if (request.getRequestURI().contains("Enroll")){
             return true;
         }
        //第一次登录没session
         if (session.getAttribute("username")!=null){
             return true;
         }
-        request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request,response);
+        request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
 

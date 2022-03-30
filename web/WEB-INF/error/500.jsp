@@ -12,5 +12,6 @@
 </head>
 <body>
 <P>程序员代码写的有问题  去砍他</P>
+<a href="/index.jsp">回到首页</a>
 </body>
 </html>

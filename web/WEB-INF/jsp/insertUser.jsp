@@ -16,7 +16,7 @@
 <div class="container-fluid">
     <jsp:include page="header.jsp"></jsp:include>
     <br>
-    <div class="text-center"><h1>添加用户</h1></div>
+    <div class="text-center"><h1>注册用户</h1></div>
     <br>
     <form class="form-horizontal" action="<%=request.getContextPath()%>/User/insert" >
         <div class="form-group">

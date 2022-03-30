@@ -41,7 +41,6 @@
             <th>主售类型</th>
             <th>地址</th>
             <th>电话</th>
-            <th>交易记录</th>
             <th>操作</th>
 
         </tr>
@@ -54,16 +53,13 @@
                 <td>${supplier.getTypeName()}</td>
                 <td>${supplier.getAddress()}</td>
                 <td>${supplier.getPhone()}</td>
-                <td>
-                    <div class="text-center">
-                        <a class="btn btn-warning" href="${pageContext.request.contextPath}">交易记录</a>
-                    </div>
-                </td>
 
                 <td>
                     <div class="text-center">
                         <a class="btn btn-warning" href="${pageContext.request.contextPath}/Supplier/toUpdate?id=${supplier.getId()}">修改</a>
                         <a class="btn btn-warning" href="${pageContext.request.contextPath}/Supplier/delete?id=${supplier.getId()}">删除</a>
+                        <a class="btn btn-warning" href="${pageContext.request.contextPath}/Supplier/toUpdate?id=${supplier.getId()}">交易</a>
+                        <a class="btn btn-warning" href="${pageContext.request.contextPath}/Supplier/delete?id=${supplier.getId()}">记录</a>
                     </div>
                 </td>
             </tr>

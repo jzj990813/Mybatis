@@ -13,34 +13,56 @@
     <select id="getUserList" resultType="User" >
         select * from `user`
     </select>
+
+
+
+
     <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=参数类型  #{ }参数通配符-->
     <select id="getUserByID" parameterType="int" resultType="com.jian.pojo.User" >
         select * from `user` where id = #{id}
     </select>
+
+
     <!--插入-->
     <insert id="addUser" parameterType="com.jian.pojo.User">
         insert into user(name,password,sex,age,address,phone) value (#{name},#{password},#{sex},#{age},#{address},#{phone})
     </insert>
+
+
     <!--修改-->
     <update id="updateUser" parameterType="com.jian.pojo.User">
         update user
         set name = #{name},sex=#{sex},age=#{age},address=#{address},phone=#{phone}
         where id=#{id};
     </update>
+
+
     <!--删除-->
     <delete id="deleteUser" parameterType="int">
         delete from user where id=#{id}
     </delete>
+
+
     <!--根据名字模糊查询-->
     <select id="getUserLike" parameterType="String" resultType="com.jian.pojo.User"  >
         select * from `user` where name like "%"#{value}"%"
     </select>
+
+
     <!--分页查询-->
     <select id="getUserLimit"  parameterType="map" resultType="User">
         select * from `user` limit #{startIndex},#{pageSize}
     </select>
-    <!--根据名字模糊查询-->
+
+
+    <!--根据名字查询-->
     <select id="getUserName"  parameterType="String"  resultType="com.jian.pojo.User"  >
         select * from `user` where name=#{value}
     </select>
+
+
+<!--根据电话查询-->
+<select id="selectPhone"  parameterType="String"  resultType="com.jian.pojo.User"  >
+select * from `user` where phone=#{phone}
+</select>
 </mapper>

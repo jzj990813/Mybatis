@@ -29,4 +29,6 @@ public interface UserMapper {
     List<User> getUserLimit(Map<String,Integer> map);
     //全名查
     User getUserName(String name);
+    //查号码
+    User selectPhone(String phone);
 }

@@ -8,11 +8,12 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Trade {
+public class Deal {
     private int id;
+    private String adminName;
     private String supName;
     private String drugName;
-    private int sum;
-    private int money;
+    private int count;
+    private int gmv;
     private Date date;
 }

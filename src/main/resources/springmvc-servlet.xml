@@ -45,9 +45,9 @@
 
 <!-- 处理-->
  <!--<bean id="/Test" class=""></bean>-->
-
- <!--拦截器-->
- <!-- <mvc:interceptors>
+<!--
+ 拦截器-->
+<!--  <mvc:interceptors>
    <mvc:interceptor>
     &lt;!&ndash;所有请求&ndash;&gt;
     <mvc:mapping path="/**"/>

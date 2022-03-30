@@ -27,4 +27,6 @@ public interface UserService {
     //分页查询
     List<User> getUserLimit(Map<String,Integer> map);
     User getUserName(String name);
+    //
+    User selectPhone(String phone);
 }

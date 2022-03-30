@@ -21,7 +21,8 @@
     <ul role="tablist" class="nav nav-tabs">
         <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/Drug/getAll">全部药品</a></li>
         <li><a class="btn btn-warning text-right" href="<%=request.getContextPath()%>/Drug/shopping">查看购物车</a></li>
-        <li><a class="btn btn-warning text-right" href="<%=request.getContextPath()%>/Drug/select1?page=1">后台</a></li>
+        <li><a class="btn btn-warning text-right" href="<%=request.getContextPath()%>/admin/goLogin">后台</a></li>
+        <li><a class="btn btn-warning text-right" href="<%=request.getContextPath()%>/admin/Out">退出</a></li>
     </ul>
     <br>
     <table class="table table-bordered table-hover">

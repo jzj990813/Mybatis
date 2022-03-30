@@ -4,16 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>鲜花列表</title>
+    <title>药品列表</title>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
 </head>
 <style>
-    body {
-       /* background: url('https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_1280.jpg') no-repeat;
-        background-size: 100% 130%;*/
-        background-color: #8ce78a;
-    }
 </style>
 <body>
 <div class="container-fluid">
@@ -25,7 +20,7 @@
         <li><a class="btn btn-warning text-left" href="<%=request.getContextPath()%>/Drug/select1?page=1">全部药品</a></li>
         <li style="padding-left: 650px">
                 <form action="${pageContext.request.contextPath}/Drug/select">
-                    <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入查询名称">
+                    <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请输入药品名称">
                     <input type="submit" value="查询">
                 </form>
         </li>
