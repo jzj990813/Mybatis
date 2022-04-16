@@ -11,7 +11,7 @@
             http://www.springframework.org/schema/mvc
             http://www.springframework.org/schema/mvc/spring-mvc.xsd">
  <!-- 扫描包 spring可以自动去扫描base-pack下面或者子包下面的java文件，如果扫描到有@Component @Controller@Service等这些注解的类，则把这些类注册为bean-->
-<context:component-scan base-package="com.jian.controller"/>
+<context:component-scan base-package="com.jian.*"/>
 <!--这个配置的作用是将我们像css js图片的 静态资源排除在外  进而提高了我们spring mvc对url的处理效率-->
 <mvc:default-servlet-handler/>
  <!-- 注解驱动 实现下面的映射器和是配置器-->
@@ -44,7 +44,7 @@
 </bean>
 
 <!-- 处理-->
- <!--<bean id="/Test" class=""></bean>-->
+<!-- <bean id="/Test" class=""></bean>-->
 <!--
  拦截器-->
 <!--  <mvc:interceptors>

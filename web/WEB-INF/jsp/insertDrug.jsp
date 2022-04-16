@@ -19,11 +19,24 @@
         $("#state").val(sheet);
     }
 </script>
+<style>
+    .container-fluid {
+        height: 650px;
+        width: 90%;
+        float: right;
+        padding: 20px;
+        border: 1px solid #ccc;
+        /* background: url("
+    <%=request.getContextPath()%> /static/111.webp") no-repeat;*/
+        background-size: 100%;
+        color: #0ea4d6;
+    }
+</style>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container-fluid">
-    <jsp:include page="header.jsp"></jsp:include>
     <br><br>
-    <form class="form-horizontal" action="<%=request.getContextPath()%>/Drug/insert" >
+    <form class="form-horizontal" action="<%=request.getContextPath()%>/Drug/insert" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <label  class="col-sm-1 control-label">药品名称</label>
             <div class="col-sm-6">
@@ -76,6 +89,12 @@
             <label  class="col-sm-1 control-label">药品描述</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control"  name="description"  >
+            </div>
+        </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">添加图片</label>
+            <div class="col-sm-6">
+                <input type="file" name="file"/>
             </div>
         </div>
         <div class="form-group">

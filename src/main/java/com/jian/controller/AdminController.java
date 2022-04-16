@@ -52,7 +52,7 @@ public class AdminController {
     }
     @RequestMapping("/goLogin")
     public String goLogin(){
-        return "login";
+        return "redirect:/Drug/select1?page=1";
         }
 
 
@@ -72,7 +72,7 @@ public class AdminController {
        if (adminLike!=null){
            if(adminLike.getName().equals(username) && adminLike.getPassword().equals(password)) {
                //把用户信息存在session中
-               session.setAttribute("username", username);
+               session.setAttribute("user", adminLike);
                model.addAttribute("username", username);
                return"redirect:/Drug/select1?page=1";
            } else {
@@ -86,9 +86,7 @@ public class AdminController {
     @RequestMapping("/Out")
     public String OutLogin(HttpSession session){
         //把用户信息存在session中
-        session.removeAttribute("username");
-        session.removeAttribute("number");
-        session.removeAttribute("drug");
+        session.removeAttribute("user");
         return "userLogin";
     }
 
@@ -113,20 +111,24 @@ public class AdminController {
     @RequestMapping("/userLogin")
     public String userLogin(HttpSession session,String username,String password,Model model) {
         User user = userService.getUserName(username);
-        String msg = "";
-        if (user != null) {
-                if (user.getName().equals(username) && user.getPassword().equals(password)) {
-                    //把用户信息存在session中
-                    session.setAttribute("username", username);
-                    model.addAttribute("username", username);
-                    return "main";
-                } else {
-                    msg = "输入有误";
-                    model.addAttribute(msg);
-                    return "userLogin";
-                }
-            }
-            return "userLogin";
 
+        if (user != null) {
+            if (user.getName().equals(username) && user.getPassword().equals(password)) {
+                //把用户信息存在session中
+                session.setAttribute("user", user);
+                session.setAttribute("id",user.getId());
+                model.addAttribute("username", user.getName());
+                return "main";
+            } else {
+                String msg = "密码有误";
+                model.addAttribute("msg", msg);
+                return "userLogin";
+            }
+        }else {
+            String msg = "用户不存在";
+            System.out.println(msg);
+            model.addAttribute("msg", msg);
+            return "userLogin";
         }
+    }
 }

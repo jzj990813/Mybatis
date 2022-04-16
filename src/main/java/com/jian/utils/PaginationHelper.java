@@ -12,6 +12,7 @@ public class PaginationHelper {
     private int countPerPage;
 
     public int getPageCount() {
+
         return totalCount % countPerPage == 0 ? totalCount / countPerPage : totalCount / countPerPage + 1;
     }
 
@@ -30,6 +31,7 @@ public class PaginationHelper {
 
     public int getCurrentPageEnd(int currentPage) {
         if (currentPage < 1 || currentPage > getTotalCount()) {
+
             throw new RuntimeException("页数错误");
         }
         // 三元运算符
@@ -37,15 +39,10 @@ public class PaginationHelper {
                 totalCount : getCurrentPageStart(currentPage) + countPerPage;
     }
 
-    public void pageUtil(int page,int count) {
-        int m=5;
-        int i=0;
-        if(page==1){
-            i= page;
-        }else {
-            i = (page-1)*5;
-        }
+    public void pageUtil(int count) {
+        int m=2;
         this.setTotalCount(count);
         this.setCountPerPage(m);
     }
+
 }

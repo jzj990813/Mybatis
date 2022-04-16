@@ -11,11 +11,31 @@
 <head>
     <title>修改用户</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
+<script>
+    function change() {
+        let sheet = $("#role").val();//下拉框
+        $("#state").val(sheet);
+    }
+</script>
+<style>
+    .container-fluid {
+        height: 650px;
+        width: 90%;
+        float: right;
+        padding: 20px;
+        border: 1px solid #ccc;
+        /* background: url("
+    <%=request.getContextPath()%> /static/111.webp") no-repeat;*/
+        background-size: 100%;
+        color: #0ea4d6;
+    }
+</style>
 <body>
-<div class="container-fluid">
-    <jsp:include page="header.jsp"></jsp:include>
-    <br><br>
+<jsp:include page="header.jsp"></jsp:include>
+<div  class="container-fluid">
     <form class="form-horizontal" action="${pageContext.request.contextPath}/User/update?id=${user.getId()}">
         <div class="form-group">
             <label  class="col-sm-1 control-label">用户ID：</label>
@@ -55,7 +75,18 @@
                 <input type="text" class="form-control"   name="phone"  value="${user.phone}" required="required">
             </div>
         </div>
-
+        <c:if test="${user.getJurisdiction()==0}">
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">用户权限：</label>
+            <div class="col-sm-6">
+                <input type="text" class="hidden" id="state" name="Jurisdiction"  value="1"/>
+                <select name="role" id="role" onchange="change()">
+                        <option selected="selected"  value="0">超级用户</option>
+                        <option selected="selected"  value="1">普通用户</option>
+                </select>
+            </div>
+        </div>
+        </c:if>
 <%-- <div class="form-group">
      <label for="select_topic" class="col-sm-1 control-label">类目</label>
      <div class="col-sm-6">
@@ -79,3 +110,6 @@
 
 </body>
 </html>
+<script>
+
+</script>

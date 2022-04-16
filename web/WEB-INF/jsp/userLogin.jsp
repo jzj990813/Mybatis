@@ -63,10 +63,8 @@
         background-image: linear-gradient(to right, #a6c1ee, #fbc2eb);
         color: #fff;
     }
-    .msg {
-        text-align: center;
-        line-height: 88px;
-    }
+
+
     a {
         text-decoration-line: none;
         color: #abc1ee;
@@ -81,6 +79,7 @@
             <div class="form-wrapper">
                 <input type="text" name="username" placeholder="username" class="input-item" required="required">
                 <input type="password" name="password" placeholder="password" class="input-item" required="required">
+                <span style="color: red">${msg}</span>
             </div>
             <div class="btn">
                 <button type="submit">Login</button>

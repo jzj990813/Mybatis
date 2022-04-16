@@ -25,14 +25,14 @@
 
     <!--插入-->
     <insert id="addUser" parameterType="com.jian.pojo.User">
-        insert into user(name,password,sex,age,address,phone) value (#{name},#{password},#{sex},#{age},#{address},#{phone})
+        insert into user(name,password,sex,age,address,phone,Jurisdiction) value (#{name},#{password},#{sex},#{age},#{address},#{phone},#{Jurisdiction})
     </insert>
 
 
     <!--修改-->
     <update id="updateUser" parameterType="com.jian.pojo.User">
         update user
-        set name = #{name},sex=#{sex},age=#{age},address=#{address},phone=#{phone}
+        set name = #{name},sex=#{sex},age=#{age},address=#{address},phone=#{phone},Jurisdiction=#{Jurisdiction}
         where id=#{id};
     </update>
 

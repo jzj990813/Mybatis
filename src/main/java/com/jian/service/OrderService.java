@@ -14,4 +14,9 @@ public interface OrderService {
     int updateOrder(Order order);
     Order getById(int id);
     int deleteOrder(int id);
+    List<Order> selectStop(int id);
+    List<Order> selectCar(int id);
+    int checkout(Order order);
+    List<Order> adminSelectStop();
+    List<Order> adminSelectCar();
 }

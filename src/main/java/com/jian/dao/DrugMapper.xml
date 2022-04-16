@@ -10,43 +10,105 @@
            <result column="" property=""></result>
        </resultMap>-->
     <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=传入参数类型-->
-    <select id="getDrugList" resultType="com.jian.pojo.Drug" >
-        select d.id id,d.name name,t.name `type`,d.date,d.stock,d.pPrice,d.sPrice,d.address,d.description
-        from drug d left join type t on d.typeId=t.id
+    <select id="getDrugList" resultType="com.jian.pojo.Drug">
+        select d.id   id,
+               d.name name,
+               t.name `type`,
+               d.date,
+               d.stock,
+               d.pPrice,
+               d.sPrice,
+               d.address,
+               d.description,
+               d.img
+        from drug d
+                 left join type t on d.typeId = t.id
     </select>
     <!--查询语句  id=要实现的方法名   resultType=返回值的实现类   parameterType=参数类型  #{ }参数通配符-->
-    <select id="getDrugByID" parameterType="int" resultType="com.jian.pojo.Drug" >
-        select d.id id,d.name name,t.name `type`,d.date,d.stock,d.pPrice,d.sPrice,d.address,d.description
-        from drug d left join type t on d.typeId=t.id
+    <select id="getDrugByID" parameterType="int" resultType="com.jian.pojo.Drug">
+        select d.id   id,
+               d.name name,
+               t.name `type`,
+               d.date,
+               d.stock,
+               d.pPrice,
+               d.sPrice,
+               d.address,
+               d.description,
+               d.img
+        from drug d
+                 left join type t on d.typeId = t.id
         where d.id = #{id}
     </select>
     <!--插入-->
     <insert id="addDrug" parameterType="com.jian.pojo.Drug">
-        insert into drug(name,typeId,date,stock,pPrice,sPrice,address,description) value (#{name},(select id from `type` where name=#{type}),#{date},#{stock},#{pPrice},#{sPrice},#{address},#{description})
+        insert into drug(name, typeId, date, stock, pPrice, sPrice, address, description, img)
+            value (#{name},
+            (select id from `type` where name=#{type}),
+            #{date},
+            #{stock},
+            #{pPrice},
+            #{sPrice},
+            #{address},
+            #{description},
+            #{img})
     </insert>
     <!--修改-->
     <update id="updateDrug" parameterType="com.jian.pojo.Drug">
         update drug
-        set name = #{name},typeId=(select id from `type` where name=#{type}),date=#{date},stock=#{stock},pPrice=#{pPrice},sPrice=#{sPrice},address=#{address},description=#{description}
-        where id=#{id};
+        set name=#{name},
+            typeId=(select id from `type` where name = #{type}),
+            date=#{date},
+            stock=#{stock},
+            pPrice=#{pPrice},
+            sPrice=#{sPrice},
+            address=#{address},
+            description=#{description},
+            img=#{img}
+        where id = #{id};
     </update>
     <!--删除-->
     <delete id="deleteDrug" parameterType="int">
-        delete from drug where id=#{id}
+        delete
+        from drug
+        where id = #{id}
     </delete>
     <!--根据名字模糊查询  ?page=${page}"/>">${page}-->
-    <select id="getDrugLike" resultType="com.jian.pojo.Drug" >
-        select d.id id,d.name name,t.name `type`,d.date,d.stock,d.pPrice,d.sPrice,d.address,d.description
-        from drug d left join type t on d.typeId=t.id
+    <select id="getDrugLike" resultType="com.jian.pojo.Drug">
+        select d.id   id,
+               d.name name,
+               t.name `type`,
+               d.date,
+               d.stock,
+               d.pPrice,
+               d.sPrice,
+               d.address,
+               d.description,
+               d.img
+        from drug d
+                 left join type t on d.typeId = t.id
+
         where d.name like "%"#{value}"%"
     </select>
     <!--分页查询-->
-    <select id="getDrugLimit"  parameterType="map" resultType="com.jian.pojo.Drug">
-        select d.id id,d.name name,t.name `type`,d.date,d.stock,d.pPrice,d.sPrice,d.address,d.description
-        from drug d left join type t on d.typeId=t.id
-        limit #{startIndex},#{pageSize}
+    <select id="getDrugLimit" parameterType="map" resultType="com.jian.pojo.Drug">
+        select d.id   id,
+               d.name name,
+               t.name `type`,
+               d.date,
+               d.stock,
+               d.pPrice,
+               d.sPrice,
+               d.address,
+               d.description,
+               d.img
+        from drug d
+                 left join type t on d.typeId = t.id
+            limit #{startIndex}
+           , #{pageSize}
     </select>
-    <select id="count"   resultType="int">
-        select count(*) from drug
+    <select id="count" resultType="int">
+        select count(*)
+        from drug
     </select>
 </mapper>

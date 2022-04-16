@@ -16,23 +16,38 @@
     <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.6.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap1.css"/>
 </head>
+<style>
+    .container-fluid {
+        height: 650px;
+        width: 90%;
+        float: right;
+        padding: 20px;
+        border: 1px solid #ccc;
+        /* background: url("
+
+    <%=request.getContextPath()%>  /static/111.webp") no-repeat;*/
+        background-size: 100%;
+        color: #0ea4d6;
+    }
+</style>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container-fluid">
-
-    <jsp:include page="header.jsp"></jsp:include>
-
-
     <ul role="tablist" class="nav nav-tabs">
-        <li><a class="btn btn-warning text-left" <%--href="<%=request.getContextPath()%>/Drug/getAll--%>>全部类型</a></li>
+        <%-- <li><a class="btn btn-warning text-left" &lt;%&ndash;href="<%=request.getContextPath()%>/Drug/getAll&ndash;%&gt;>全部类型</a></li>--%>
         <li style="padding-left: 650px">
-            <form action="${pageContext.request.contextPath}/Drug/select">
-                <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px" placeholder="请类型名称"  >&nbsp;&nbsp;
-                <input type="submit" value="查询">
-            </form>
+            <c:if test="${user.getJurisdiction()==0}">
+                <form action="${pageContext.request.contextPath}/Drug/select">
+                    <input type="text" name="selectName" style="font-size: 20px; height: 26px;width: 190px"
+                           placeholder="请类型名称">&nbsp;&nbsp;
+                    <input type="submit" value="查询">
+                </form>
+            </c:if>
         </li>
-    </ul><%--	<li <c:if test="${type==1 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=1">条幅推荐</a></li>
-		<li <c:if test="${type==2 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=2">热销推荐</a></li>
-		<li <c:if test="${type==3 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=3">新鲜花推荐</a></li>--%>
+    </ul>
+    <%--	<li <c:if test="${type==1 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=1">条幅推荐</a></li>
+            <li <c:if test="${type==2 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=2">热销推荐</a></li>
+            <li <c:if test="${type==3 }">class="active"</c:if> role="presentation"><a href="<%=request.getContextPath()%>/admin/goods_list?type=3">新鲜花推荐</a></li>--%>
     <br>
     <table class="table table-bordered table-hover">
         <tr>
@@ -49,8 +64,10 @@
                 <td>${type.getDescription()}</td>
                 <td>
                     <div class="text-center">
-                        <a class="btn btn-warning" href="${pageContext.request.contextPath}/Type/toUpdate?id=${type.getId()}">修改</a>
-                        <a class="btn btn-warning" href="${pageContext.request.contextPath}/Type/delete?id=${type.getId()}">删除</a>
+                        <a class="btn btn-warning"
+                           href="${pageContext.request.contextPath}/Type/toUpdate?id=${type.getId()}">修改</a>
+                        <a class="btn btn-warning"
+                           href="${pageContext.request.contextPath}/Type/delete?id=${type.getId()}">删除</a>
                     </div>
                 </td>
             </tr>

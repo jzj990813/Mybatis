@@ -13,5 +13,10 @@ public interface OrderMapper {
     int insertOrder(Order order);
     int updateOrder(Order order);
     Order getById(int id);
+    List<Order> selectStop(int id);
+    List<Order> selectCar(int id);
+    int checkout(Order order);
+    List<Order> adminSelectStop();
+    List<Order> adminSelectCar();
 
 }

@@ -21,13 +21,24 @@
        }
    </script>
 </head>
+<style>
+    .container-fluid {
+        height: 650px;
+        width: 90%;
+        float: right;
+        padding: 20px;
+        border: 1px solid #ccc;
+        /* background: url("
+    <%=request.getContextPath()%> /static/111.webp") no-repeat;*/
+        background-size: 100%;
+        color: #0ea4d6;
+    }
+</style>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container-fluid">
-
-    <jsp:include page="header.jsp"></jsp:include>
-
     <br><br>
-    <form class="form-horizontal" action="${pageContext.request.contextPath}/Drug/update">
+    <form class="form-horizontal" action="${pageContext.request.contextPath}/Drug/update" enctype="multipart/form-data" method="post">
         <div class="form-group">
             <label  class="col-sm-1 control-label">药品ID：</label>
             <div class="col-sm-6">
@@ -93,6 +104,13 @@
                 <input type="text" class="form-control"   name="description"  value="${drug.description}" required="required">
             </div>
              </div>
+        <div class="form-group">
+            <label  class="col-sm-1 control-label">图片信息：</label>
+            <div class="col-sm-6">
+                <img src="${pageContext.request.contextPath}${drug.getImg()}" width="150" height="100"></td>
+                <input type="file" name="file"/>
+            </div>
+        </div>
 
        <%-- <div class="form-group">
             <label for="select_topic" class="col-sm-1 control-label">类目</label>

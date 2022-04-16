@@ -16,6 +16,7 @@ import java.util.Objects;
         售价   sPrice
         地址 address
         描述  Description
+        图片 img
  */
 public class Drug {
     private int id;
@@ -27,6 +28,7 @@ public class Drug {
     private int sPrice;
     private String address;
     private String description;
+    private String img;
 
     public Drug() {
     }
@@ -52,6 +54,19 @@ public class Drug {
         this.sPrice = sPrice;
         this.address = address;
         this.description = description;
+    }
+
+    public Drug(int id, String name, String type, Date date, int stock, int pPrice, int sPrice, String address, String description, String img) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.date = date;
+        this.stock = stock;
+        this.pPrice = pPrice;
+        this.sPrice = sPrice;
+        this.address = address;
+        this.description = description;
+        this.img = img;
     }
 
     public int getId() {
@@ -126,17 +141,25 @@ public class Drug {
         this.description = description;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Drug drug = (Drug) o;
-        return id == drug.id && stock == drug.stock && pPrice == drug.pPrice && sPrice == drug.sPrice && Objects.equals(name, drug.name) && Objects.equals(type, drug.type) && Objects.equals(date, drug.date) && Objects.equals(address, drug.address) && Objects.equals(description, drug.description);
+        return id == drug.id && stock == drug.stock && pPrice == drug.pPrice && sPrice == drug.sPrice && Objects.equals(name, drug.name) && Objects.equals(type, drug.type) && Objects.equals(date, drug.date) && Objects.equals(address, drug.address) && Objects.equals(description, drug.description) && Objects.equals(img, drug.img);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, type, date, stock, pPrice, sPrice, address, description);
+        return Objects.hash(id, name, type, date, stock, pPrice, sPrice, address, description, img);
     }
 
     @Override
@@ -151,6 +174,7 @@ public class Drug {
                 ", sPrice=" + sPrice +
                 ", address='" + address + '\'' +
                 ", description='" + description + '\'' +
+                ", img='" + img + '\'' +
                 '}';
     }
 }

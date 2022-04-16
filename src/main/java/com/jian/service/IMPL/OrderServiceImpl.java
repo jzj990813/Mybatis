@@ -12,8 +12,9 @@ import java.util.List;
 public class OrderServiceImpl implements OrderService {
     @Autowired
     public OrderMapper orderMapper;
-    public void setOrderMapper(OrderMapper orderMapper){
-        this.orderMapper=orderMapper;
+
+    public void setOrderMapper(OrderMapper orderMapper) {
+        this.orderMapper = orderMapper;
     }
 
     @Override
@@ -38,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int updateOrder(Order order) {
-       return orderMapper.updateOrder(order);
+        return orderMapper.updateOrder(order);
     }
 
     @Override
@@ -51,5 +52,29 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.deleteOrder(id);
     }
 
+    @Override
+    public List<Order> selectStop(int id) {
+        return orderMapper.selectStop(id);
+    }
+
+    @Override
+    public List<Order> selectCar(int id) {
+        return orderMapper.selectCar(id);
+    }
+
+    @Override
+    public int checkout(Order order) {
+        return orderMapper.checkout(order);
+    }
+
+    @Override
+    public List<Order> adminSelectStop() {
+        return orderMapper.adminSelectStop();
+    }
+
+    @Override
+    public List<Order> adminSelectCar() {
+        return orderMapper.adminSelectCar();
+    }
 
 }

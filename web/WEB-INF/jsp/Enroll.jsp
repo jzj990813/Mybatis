@@ -22,6 +22,7 @@
 <form class="form-horizontal" action="<%=request.getContextPath()%>/User/Enroll" method="post" >
     <div class="form-group">
         <label  class="col-sm-1 control-label">用户姓名</label>
+        <span>${msg1}</span>
         <div class="col-sm-6">
             <input type="text" class="form-control"  name="name"  required="required">
         </div>
@@ -29,13 +30,13 @@
     <div class="form-group">
         <label  class="col-sm-1 control-label">用户密码</label>
         <div class="col-sm-6">
-            <input type="password" class="form-control"  name="psd" required="required" >
+            <input  id="pwd1" type="password" class="form-control"  name="psd" required="required" >
         </div>
     </div>
     <div class="form-group">
         <label  class="col-sm-1 control-label">确认密码</label>
         <div class="col-sm-6">
-            <input type="password" class="form-control"  name="password" required="required" >
+            <input id="pwd2"type="password" class="form-control"  name="password" required="required" >
         </div>
     </div>
     <div class="form-group">
@@ -62,15 +63,29 @@
     </div>
     <div class="form-group">
         <label  class="col-sm-1 control-label">用户电话</label>
-        <div class="col-sm-6">
+        <div  class="col-sm-6">
             <input type="text" class="form-control" name="phone" required="required" >
+            <%--<span id="msg" style="color: red">${msg}</span>--%>
         </div>
     </div>
+    <input type="hidden" name="jurisdiction" value="1" >
     <div class="form-group">
         <div class="col-sm-offset-1 col-sm-10">
             <button type="submit" class="btn btn-success">提交</button>
+            <a href="/">返回</a>
         </div>
     </div>
 </form>
 </body>
 </html>
+<script>
+    $('#pwd2').blur(function (){
+        var pwd1 = $('#pwd1').val()
+        var pwd2 = $(this).val()
+        if(pwd1!==pwd2){
+            alert("密码不一致")
+        }
+
+    })
+
+</script>

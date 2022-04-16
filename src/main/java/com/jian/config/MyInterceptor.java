@@ -18,24 +18,24 @@ public class MyInterceptor implements HandlerInterceptor {
         if (request.getRequestURI().contains("login")){
             return true;
         }
-        if (request.getRequestURI().contains("goLogin")){
+        if (request.getRequestURI().contains("/admin/goLogin")){
             return true;
         }
-        if (request.getRequestURI().contains("userGoLogin")){
+        if (request.getRequestURI().contains("/admin/userGoLogin")){
             return true;
         }
         if (request.getRequestURI().contains("userLogin")){
             return true;
         }
 
-        if (request.getRequestURI().contains("toEnroll")){
+        if (request.getRequestURI().contains("/User/toEnroll")){
             return true;
         }
         if (request.getRequestURI().contains("Enroll")){
             return true;
         }
        //第一次登录没session
-        if (session.getAttribute("username")!=null){
+        if (session.getAttribute("user")!=null){
             return true;
         }
         request.getRequestDispatcher("/WEB-INF/index.jsp").forward(request,response);

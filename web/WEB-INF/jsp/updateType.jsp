@@ -12,10 +12,22 @@
     <title>修改类型</title>
     <link rel="stylesheet" href="<%=request.getContextPath()%>/static/bootstrap.css"/>
 </head>
+<style>
+    .container-fluid {
+        height: 650px;
+        width: 90%;
+        float: right;
+        padding: 20px;
+        border: 1px solid #ccc;
+        /* background: url("
+    <%=request.getContextPath()%> /static/111.webp") no-repeat;*/
+        background-size: 100%;
+        color: #0ea4d6;
+    }
+</style>
 <body>
+<jsp:include page="header.jsp"></jsp:include>
 <div class="container-fluid">
-    <jsp:include page="header.jsp"></jsp:include>
-    <br><br>
     <form class="form-horizontal" action="${pageContext.request.contextPath}/Type/update?id=${typeList.getId()}" >
         <div class="form-group">
             <label  class="col-sm-1 control-label">类型id</label>
